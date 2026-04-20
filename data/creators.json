@@ -1,0 +1,53 @@
+[
+  {
+    "creatorId": "creator_demo",
+    "displayName": "Demo Creator",
+    "credibilityScore": 50,
+    "riskLevel": "medium",
+    "verifiedBadge": false,
+    "totalUploads": 7,
+    "verifiedCount": 3,
+    "flaggedCount": 4,
+    "contentHistory": [
+      "13ad0102a04113f38d313de01f676073450ac8f96695628638cbb2be8746d2a1",
+      "7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a",
+      "manual-hash-2",
+      "manual-hash-1"
+    ],
+    "historySummary": "Demo Creator has a risky publishing pattern with more flagged than trusted submissions.",
+    "blockchainIdentityId": "C1C5F66245D9846F",
+    "identityStatus": "queued"
+  },
+  {
+    "creatorId": "creator-demo",
+    "displayName": "Demo Creator",
+    "credibilityScore": 63,
+    "riskLevel": "medium",
+    "verifiedBadge": false,
+    "totalUploads": 1,
+    "verifiedCount": 0,
+    "flaggedCount": 0,
+    "contentHistory": [
+      "88fbc78c382d281b24646571a8c6bf8f2c9098538d7e599cf62c7d44a0625867"
+    ],
+    "historySummary": "Demo Creator is still building credibility across early submissions.",
+    "blockchainIdentityId": "C8E1F7ABCE05C08F",
+    "identityStatus": "queued"
+  },
+  {
+    "creatorId": "key-2",
+    "displayName": "Pro Demo Key",
+    "credibilityScore": 70,
+    "riskLevel": "low",
+    "verifiedBadge": false,
+    "totalUploads": 1,
+    "verifiedCount": 1,
+    "flaggedCount": 0,
+    "contentHistory": [
+      "367dc21a0491a102823d94801434cfac54753a6038dc499a5935f07ecbf64c38"
+    ],
+    "historySummary": "Pro Demo Key has 1 trusted items and 0 flagged items on record.",
+    "blockchainIdentityId": "7C36B0A9DEDDE119",
+    "identityStatus": "queued"
+  }
+]

@@ -1,0 +1,1 @@
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Programs\codex\TruthChain AI\.next\cache\webpack\server-production\9.pack_' -> 'C:\Programs\codex\TruthChain AI\.next\cache\webpack\server-production\9.pack'

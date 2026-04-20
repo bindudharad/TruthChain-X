@@ -1,0 +1,11 @@
+
+> truthchain-ai@0.1.0 start
+> node .next/standalone/server.js
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3021
+   - Network:      http://0.0.0.0:3021
+
+ ✓ Starting...
+ ✓ Ready in 767ms
+[TruthChain API] POST /api/verify-content by guest-demo (free) at 2026-04-16T02:35:10.805Z

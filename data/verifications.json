@@ -1,0 +1,884 @@
+[
+  {
+    "id": "21f55b83-b6a7-4851-902d-5919f6b387d0",
+    "hash": "13ad0102a04113f38d313de01f676073450ac8f96695628638cbb2be8746d2a1",
+    "type": "text",
+    "fileName": "text-submission",
+    "creatorId": "creator_demo",
+    "creatorProfile": {
+      "creatorId": "creator_demo",
+      "displayName": "Demo Creator",
+      "credibilityScore": 50,
+      "riskLevel": "medium",
+      "verifiedBadge": false,
+      "totalUploads": 7,
+      "verifiedCount": 3,
+      "flaggedCount": 4,
+      "contentHistory": [
+        "13ad0102a04113f38d313de01f676073450ac8f96695628638cbb2be8746d2a1",
+        "7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a",
+        "manual-hash-2",
+        "manual-hash-1"
+      ],
+      "historySummary": "Demo Creator has a risky publishing pattern with more flagged than trusted submissions.",
+      "blockchainIdentityId": "C1C5F66245D9846F",
+      "identityStatus": "queued"
+    },
+    "embedding": [
+      -0.04610809671686511,
+      0.17465188150327698,
+      0.3031956662896888,
+      -0.12994099983843807,
+      -0.1690630212951721,
+      -0.3255511071221082,
+      -0.19141846212759153,
+      -0.10479112890196615,
+      -0.3479065479545277,
+      -0.2053906126478537,
+      -0.2053906126478537,
+      -0.006986075260131093,
+      -0.20259618254380127,
+      -0.30599009639374125,
+      -0.3395232576423704,
+      0.2836346555613218,
+      -0.07684682786144187,
+      -0.09361340848575643,
+      -0.09920226869386131,
+      0.11596884931817589,
+      -0.04331366661281269,
+      -0.12714656973438562,
+      0.12155770952628073,
+      0.26407364483295476
+    ],
+    "truthScore": 75,
+    "confidence": 72,
+    "executiveSummary": "The ensemble leans toward authenticity, though provenance checks still strengthen trust.",
+    "explanation": "GROQ: Rapid triage found mixed or limited signals and handed the content to deeper models. OPENROUTER: Deep reasoning found limited manipulation evidence, though provenance checks still matter. NEMOTRON: Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+    "findings": [
+      "no strong rapid-response flags",
+      "low prior-cluster similarity",
+      "contextual evidence remains limited"
+    ],
+    "suspiciousSignals": [
+      "No major high-risk markers dominated the ensemble output."
+    ],
+    "detectedClaims": [
+      "?? ??? ???? ?? ??? ??? ?? ????? ????? ?????? ???? ???"
+    ],
+    "modelBreakdown": [
+      {
+        "provider": "groq",
+        "model": "demo-groq-fastlane",
+        "role": "Fast triage and summarization",
+        "verdict": "real",
+        "truthScore": 80,
+        "confidence": 69,
+        "summary": "Rapid triage found mixed or limited signals and handed the content to deeper models.",
+        "signals": [
+          "no strong rapid-response flags"
+        ],
+        "weight": 1.05,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "openrouter",
+        "model": "demo-gpt-oss",
+        "role": "Deep reasoning and explanation",
+        "verdict": "real",
+        "truthScore": 76,
+        "confidence": 80,
+        "summary": "Deep reasoning found limited manipulation evidence, though provenance checks still matter.",
+        "signals": [],
+        "weight": 1.35,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "nemotron",
+        "model": "nemotron-embed-sim",
+        "role": "Embeddings and semantic similarity",
+        "verdict": "real",
+        "truthScore": 78,
+        "confidence": 60,
+        "summary": "Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+        "signals": [
+          "low prior-cluster similarity"
+        ],
+        "weight": 1.15,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "gemma",
+        "model": "gemma-factcheck-sim",
+        "role": "Fact-checking and contextual understanding",
+        "verdict": "uncertain",
+        "truthScore": 68,
+        "confidence": 77,
+        "summary": "Context analysis found partial grounding, but more source evidence would raise confidence.",
+        "signals": [
+          "contextual evidence remains limited"
+        ],
+        "weight": 1.2,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      }
+    ],
+    "preprocessing": {
+      "contentHash": "13ad0102a04113f38d313de01f676073450ac8f96695628638cbb2be8746d2a1",
+      "mimeType": "text/plain",
+      "byteLength": 53,
+      "metadata": [
+        "text-submission",
+        "type:text"
+      ],
+      "sampledFrames": 0,
+      "language": {
+        "code": "mixed",
+        "label": "Mixed",
+        "confidence": 52
+      }
+    },
+    "consensus": {
+      "label": "Consensus: likely authentic",
+      "meter": 74,
+      "weightedTruthScore": 75,
+      "confidence": 72,
+      "basedOn": [
+        "groq",
+        "openrouter",
+        "nemotron",
+        "gemma"
+      ]
+    },
+    "trustFingerprint": {
+      "truthScore": 75,
+      "manipulationRisk": "low",
+      "sourceCredibility": "high",
+      "aiConsensus": 74,
+      "similarMatches": 0,
+      "confidence": 72,
+      "fingerprintId": "13AD0102A04113F3"
+    },
+    "trustGraph": [],
+    "viralSignal": {
+      "repeatCount": 1,
+      "trendingScore": 28,
+      "status": "emerging",
+      "clusterLabel": "New narrative cluster"
+    },
+    "comparisonVisuals": [
+      {
+        "title": "Authentic vs manipulated comparison",
+        "description": "Prompt pack for side-by-side simulation of authentic and suspicious traits.",
+        "prompt": "Create a comparison board for a text submission showing authentic indicators on the left and suspicious indicators on the right: no strong rapid-response flags, low prior-cluster similarity, contextual evidence remains limited."
+      },
+      {
+        "title": "Evidence overlay storyboard",
+        "description": "Storyboard prompt that highlights where reviewers should focus first.",
+        "prompt": "Generate a reviewer storyboard for text content that emphasizes: no strong rapid-response flags, low prior-cluster similarity, contextual evidence remains limited."
+      }
+    ],
+    "timestamp": "2026-04-16T02:04:30.952Z",
+    "firstVerifiedAt": "2026-04-16T02:04:30.952Z",
+    "lastVerifiedAt": "2026-04-16T02:04:30.952Z",
+    "occurrenceCount": 1,
+    "previouslyVerified": false,
+    "blockchainStatus": "queued",
+    "transactionHash": "demo-0ce59603-ae5a-4857-85a8-bebf51382d14",
+    "sourcePreview": "?? ??? ???? ?? ??? ??? ?? ????? ????? ?????? ???? ???"
+  },
+  {
+    "id": "0f8d6931-18f6-42a5-9052-f549c2f5b015",
+    "hash": "88fbc78c382d281b24646571a8c6bf8f2c9098538d7e599cf62c7d44a0625867",
+    "type": "text",
+    "fileName": "text-submission",
+    "creatorId": "creator-demo",
+    "creatorProfile": {
+      "creatorId": "creator-demo",
+      "displayName": "Demo Creator",
+      "credibilityScore": 63,
+      "riskLevel": "medium",
+      "verifiedBadge": false,
+      "totalUploads": 1,
+      "verifiedCount": 0,
+      "flaggedCount": 0,
+      "contentHistory": [
+        "88fbc78c382d281b24646571a8c6bf8f2c9098538d7e599cf62c7d44a0625867"
+      ],
+      "historySummary": "Demo Creator is still building credibility across early submissions.",
+      "blockchainIdentityId": "C8E1F7ABCE05C08F",
+      "identityStatus": "queued"
+    },
+    "embedding": [
+      0.25911012548372864,
+      0.29309178128487345,
+      -0.00991131627533389,
+      -0.3299052417361136,
+      -0.31291441383554125,
+      0.2959235859349688,
+      -0.06937921392733719,
+      -0.2506147115334425,
+      -0.14866974413000827,
+      0.14583793947991283,
+      0.19964222783172542,
+      0.00991131627533385,
+      0.19964222783172542,
+      -0.055220190676860216,
+      -0.29875539058506423,
+      -0.03822936277628783,
+      0.22796027433267935,
+      -0.10619267437857732,
+      -0.14017433017972206,
+      -0.09769726042829116,
+      -0.00991131627533389,
+      0.021238534875715472,
+      0.3525596789368768,
+      0.22512846968258396
+    ],
+    "truthScore": 68,
+    "confidence": 74,
+    "executiveSummary": "The model ensemble is split, so this result should be treated as cautionary rather than final.",
+    "explanation": "GROQ: Rapid triage found mixed or limited signals and handed the content to deeper models. OPENROUTER: Deep reasoning found unresolved evidence gaps, so the content remains in a caution state. NEMOTRON: Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+    "findings": [
+      "viral framing detected",
+      "low prior-cluster similarity"
+    ],
+    "suspiciousSignals": [
+      "viral framing detected"
+    ],
+    "detectedClaims": [
+      "Breaking: this miracle cure was secretly approved everywhere overnight."
+    ],
+    "modelBreakdown": [
+      {
+        "provider": "groq",
+        "model": "demo-groq-fastlane",
+        "role": "Fast triage and summarization",
+        "verdict": "uncertain",
+        "truthScore": 69,
+        "confidence": 69,
+        "summary": "Rapid triage found mixed or limited signals and handed the content to deeper models.",
+        "signals": [
+          "viral framing detected"
+        ],
+        "weight": 1.05,
+        "latencyMs": 3,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "openrouter",
+        "model": "demo-gpt-oss",
+        "role": "Deep reasoning and explanation",
+        "verdict": "uncertain",
+        "truthScore": 67,
+        "confidence": 80,
+        "summary": "Deep reasoning found unresolved evidence gaps, so the content remains in a caution state.",
+        "signals": [
+          "viral framing detected"
+        ],
+        "weight": 1.35,
+        "latencyMs": 1,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "nemotron",
+        "model": "nemotron-embed-sim",
+        "role": "Embeddings and semantic similarity",
+        "verdict": "real",
+        "truthScore": 78,
+        "confidence": 67,
+        "summary": "Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+        "signals": [
+          "low prior-cluster similarity"
+        ],
+        "weight": 1.15,
+        "latencyMs": 1,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "gemma",
+        "model": "gemma-factcheck-sim",
+        "role": "Fact-checking and contextual understanding",
+        "verdict": "uncertain",
+        "truthScore": 58,
+        "confidence": 77,
+        "summary": "Context analysis found partial grounding, but more source evidence would raise confidence.",
+        "signals": [
+          "viral framing detected"
+        ],
+        "weight": 1.2,
+        "latencyMs": 1,
+        "usedLiveApi": false
+      }
+    ],
+    "preprocessing": {
+      "contentHash": "88fbc78c382d281b24646571a8c6bf8f2c9098538d7e599cf62c7d44a0625867",
+      "mimeType": "text/plain",
+      "byteLength": 71,
+      "metadata": [
+        "text-submission",
+        "type:text"
+      ],
+      "sampledFrames": 0,
+      "language": {
+        "code": "en",
+        "label": "English",
+        "confidence": 74
+      }
+    },
+    "consensus": {
+      "label": "Consensus: mixed evidence",
+      "meter": 71,
+      "weightedTruthScore": 68,
+      "confidence": 74,
+      "basedOn": [
+        "groq",
+        "openrouter",
+        "nemotron",
+        "gemma"
+      ]
+    },
+    "trustFingerprint": {
+      "truthScore": 68,
+      "manipulationRisk": "low",
+      "sourceCredibility": "medium",
+      "aiConsensus": 71,
+      "similarMatches": 0,
+      "confidence": 74,
+      "fingerprintId": "88FBC78C382D281B"
+    },
+    "trustGraph": [],
+    "viralSignal": {
+      "repeatCount": 1,
+      "trendingScore": 27,
+      "status": "emerging",
+      "clusterLabel": "New narrative cluster"
+    },
+    "comparisonVisuals": [
+      {
+        "title": "Authentic vs manipulated comparison",
+        "description": "Prompt pack for side-by-side simulation of authentic and suspicious traits.",
+        "prompt": "Create a comparison board for a text submission showing authentic indicators on the left and suspicious indicators on the right: viral framing detected, low prior-cluster similarity."
+      },
+      {
+        "title": "Evidence overlay storyboard",
+        "description": "Storyboard prompt that highlights where reviewers should focus first.",
+        "prompt": "Generate a reviewer storyboard for text content that emphasizes: viral framing detected, low prior-cluster similarity."
+      }
+    ],
+    "timestamp": "2026-04-16T02:02:08.424Z",
+    "firstVerifiedAt": "2026-04-16T02:02:08.424Z",
+    "lastVerifiedAt": "2026-04-16T02:02:08.424Z",
+    "occurrenceCount": 1,
+    "previouslyVerified": false,
+    "blockchainStatus": "queued",
+    "transactionHash": "demo-24d2ef1b-42d8-4654-b0cf-bfe070cd0493",
+    "sourcePreview": "Breaking: this miracle cure was secretly approved everywhere overnight."
+  },
+  {
+    "id": "demo-text-1",
+    "hash": "7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a",
+    "type": "text",
+    "fileName": "viral-health-claim.txt",
+    "creatorId": "creator_demo",
+    "creatorProfile": {
+      "creatorId": "creator_demo",
+      "displayName": "Demo Creator",
+      "credibilityScore": 42,
+      "riskLevel": "medium",
+      "verifiedBadge": false,
+      "totalUploads": 6,
+      "verifiedCount": 2,
+      "flaggedCount": 4,
+      "contentHistory": [
+        "7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a",
+        "manual-hash-2",
+        "manual-hash-1"
+      ],
+      "historySummary": "Demo Creator has a risky publishing pattern with more flagged than trusted submissions.",
+      "blockchainIdentityId": "C1C5F66245D9846F",
+      "identityStatus": "queued"
+    },
+    "truthScore": 23,
+    "confidence": 88,
+    "executiveSummary": "The ensemble agrees that this claim is high-risk and likely misinformation.",
+    "explanation": "The claim uses urgency and miracle framing without credible sourcing.",
+    "findings": [
+      "No trusted source reference detected."
+    ],
+    "suspiciousSignals": [
+      "Viral forwarding language",
+      "Unsupported medical certainty"
+    ],
+    "detectedClaims": [
+      "Breaking: Scientists confirm drinking silver solution eliminates all viruses in 24 hours. Share before this gets removed."
+    ],
+    "modelBreakdown": [
+      {
+        "provider": "groq",
+        "model": "demo-groq-fastlane",
+        "role": "Fast triage and summarization",
+        "verdict": "fake",
+        "truthScore": 28,
+        "confidence": 70,
+        "summary": "Rapid triage flags this as a viral health scare.",
+        "signals": [
+          "viral framing detected"
+        ],
+        "latencyMs": 132,
+        "usedLiveApi": false,
+        "weight": 1.1
+      },
+      {
+        "provider": "openrouter",
+        "model": "demo-gpt-oss",
+        "role": "Deep reasoning and explanation",
+        "verdict": "fake",
+        "truthScore": 21,
+        "confidence": 85,
+        "summary": "Reasoning detects unsupported certainty and missing evidence.",
+        "signals": [
+          "absolute certainty without nuance"
+        ],
+        "latencyMs": 421,
+        "usedLiveApi": false,
+        "weight": 1.4
+      }
+    ],
+    "preprocessing": {
+      "contentHash": "7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a",
+      "mimeType": "text/plain",
+      "byteLength": 121,
+      "metadata": [
+        "viral-health-claim.txt",
+        "type:text"
+      ],
+      "sampledFrames": 0
+    },
+    "consensus": {
+      "label": "Consensus: likely false",
+      "meter": 56,
+      "weightedTruthScore": 23,
+      "confidence": 88,
+      "basedOn": [
+        "groq",
+        "openrouter",
+        "gemma"
+      ]
+    },
+    "trustFingerprint": {
+      "truthScore": 23,
+      "manipulationRisk": "high",
+      "sourceCredibility": "low",
+      "aiConsensus": 56,
+      "similarMatches": 0,
+      "confidence": 88,
+      "fingerprintId": "7AE760B20D11E448"
+    },
+    "trustGraph": [],
+    "viralSignal": {
+      "repeatCount": 1,
+      "trendingScore": 73,
+      "status": "watch",
+      "clusterLabel": "Health misinformation cluster"
+    },
+    "comparisonVisuals": [
+      {
+        "title": "Authentic vs manipulated comparison",
+        "description": "Prompt pack for side-by-side simulation of authentic and suspicious traits.",
+        "prompt": "Create a comparison board for miracle-cure misinformation."
+      }
+    ],
+    "timestamp": "2026-04-16T01:43:54.651Z",
+    "lastVerifiedAt": "2026-04-16T01:43:54.653Z",
+    "occurrenceCount": 17,
+    "previouslyVerified": true,
+    "blockchainStatus": "queued",
+    "transactionHash": "demo-seeded-text",
+    "sourcePreview": "Breaking: Scientists confirm drinking silver solution eliminates all viruses in 24 hours. Share before this gets removed."
+  },
+  {
+    "id": "9eda7199-e118-4957-a3ef-dbddb1bfc9e4",
+    "hash": "367dc21a0491a102823d94801434cfac54753a6038dc499a5935f07ecbf64c38",
+    "type": "text",
+    "fileName": "bulk-b.txt",
+    "creatorId": "key-2",
+    "creatorProfile": {
+      "creatorId": "key-2",
+      "displayName": "Pro Demo Key",
+      "credibilityScore": 70,
+      "riskLevel": "low",
+      "verifiedBadge": false,
+      "totalUploads": 1,
+      "verifiedCount": 1,
+      "flaggedCount": 0,
+      "contentHistory": [
+        "367dc21a0491a102823d94801434cfac54753a6038dc499a5935f07ecbf64c38"
+      ],
+      "historySummary": "Pro Demo Key has 1 trusted items and 0 flagged items on record.",
+      "blockchainIdentityId": "7C36B0A9DEDDE119",
+      "identityStatus": "queued"
+    },
+    "embedding": [
+      -0.016423884517197326,
+      0.18318948115335465,
+      0.011370381588828941,
+      -0.22614425604448607,
+      0.29689329704164374,
+      0.19582323847427568,
+      -0.2387780133654071,
+      -0.22614425604448607,
+      -0.3196340602193016,
+      -0.22867100750867025,
+      0.17813597822498625,
+      -0.2160372501877493,
+      -0.2438315162937755,
+      -0.22867100750867025,
+      0.17055572383243361,
+      -0.17055572383243364,
+      0.10233343429946018,
+      0.04674490208740772,
+      -0.22867100750867025,
+      0.20845699579519664,
+      -0.22361750458030188,
+      -0.27162578239980173,
+      0.18066272968917046,
+      -0.11244044015619699
+    ],
+    "truthScore": 75,
+    "confidence": 72,
+    "executiveSummary": "The ensemble leans toward authenticity, though provenance checks still strengthen trust.",
+    "explanation": "GROQ: Rapid triage found mixed or limited signals and handed the content to deeper models. OPENROUTER: Deep reasoning found limited manipulation evidence, though provenance checks still matter. NEMOTRON: Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+    "findings": [
+      "no strong rapid-response flags",
+      "low prior-cluster similarity",
+      "contextual evidence remains limited"
+    ],
+    "suspiciousSignals": [
+      "No major high-risk markers dominated the ensemble output."
+    ],
+    "detectedClaims": [
+      "Official weather advisory update"
+    ],
+    "modelBreakdown": [
+      {
+        "provider": "groq",
+        "model": "demo-groq-fastlane",
+        "role": "Fast triage and summarization",
+        "verdict": "real",
+        "truthScore": 80,
+        "confidence": 69,
+        "summary": "Rapid triage found mixed or limited signals and handed the content to deeper models.",
+        "signals": [
+          "no strong rapid-response flags"
+        ],
+        "weight": 1.05,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "openrouter",
+        "model": "demo-gpt-oss",
+        "role": "Deep reasoning and explanation",
+        "verdict": "real",
+        "truthScore": 76,
+        "confidence": 80,
+        "summary": "Deep reasoning found limited manipulation evidence, though provenance checks still matter.",
+        "signals": [],
+        "weight": 1.35,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "nemotron",
+        "model": "nemotron-embed-sim",
+        "role": "Embeddings and semantic similarity",
+        "verdict": "real",
+        "truthScore": 78,
+        "confidence": 60,
+        "summary": "Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+        "signals": [
+          "low prior-cluster similarity"
+        ],
+        "weight": 1.15,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "gemma",
+        "model": "gemma-factcheck-sim",
+        "role": "Fact-checking and contextual understanding",
+        "verdict": "uncertain",
+        "truthScore": 68,
+        "confidence": 77,
+        "summary": "Context analysis found partial grounding, but more source evidence would raise confidence.",
+        "signals": [
+          "contextual evidence remains limited"
+        ],
+        "weight": 1.2,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      }
+    ],
+    "preprocessing": {
+      "contentHash": "367dc21a0491a102823d94801434cfac54753a6038dc499a5935f07ecbf64c38",
+      "mimeType": "text/plain",
+      "byteLength": 32,
+      "metadata": [
+        "bulk-b.txt",
+        "type:text"
+      ],
+      "sampledFrames": 0
+    },
+    "consensus": {
+      "label": "Consensus: likely authentic",
+      "meter": 74,
+      "weightedTruthScore": 75,
+      "confidence": 72,
+      "basedOn": [
+        "groq",
+        "openrouter",
+        "nemotron",
+        "gemma"
+      ]
+    },
+    "trustFingerprint": {
+      "truthScore": 75,
+      "manipulationRisk": "low",
+      "sourceCredibility": "high",
+      "aiConsensus": 74,
+      "similarMatches": 0,
+      "confidence": 72,
+      "fingerprintId": "367DC21A0491A102"
+    },
+    "trustGraph": [],
+    "viralSignal": {
+      "repeatCount": 1,
+      "trendingScore": 25,
+      "status": "emerging",
+      "clusterLabel": "New narrative cluster"
+    },
+    "comparisonVisuals": [
+      {
+        "title": "Authentic vs manipulated comparison",
+        "description": "Prompt pack for side-by-side simulation of authentic and suspicious traits.",
+        "prompt": "Create a comparison board for a text submission showing authentic indicators on the left and suspicious indicators on the right: no strong rapid-response flags, low prior-cluster similarity, contextual evidence remains limited."
+      },
+      {
+        "title": "Evidence overlay storyboard",
+        "description": "Storyboard prompt that highlights where reviewers should focus first.",
+        "prompt": "Generate a reviewer storyboard for text content that emphasizes: no strong rapid-response flags, low prior-cluster similarity, contextual evidence remains limited."
+      }
+    ],
+    "timestamp": "2026-04-15T19:37:15.305Z",
+    "firstVerifiedAt": "2026-04-15T19:37:15.305Z",
+    "lastVerifiedAt": "2026-04-15T19:37:15.305Z",
+    "occurrenceCount": 1,
+    "previouslyVerified": false,
+    "blockchainStatus": "queued",
+    "transactionHash": "demo-4ffe28c7-1b91-46d7-8f5e-b3e0d09a458f",
+    "sourcePreview": "Official weather advisory update"
+  },
+  {
+    "id": "ee5405e9-acea-4d25-9ede-3200080f6c3c",
+    "hash": "cc52649c7a4646f0b70d51b6df6db8bff344e19895011f364e8fa88187e95326",
+    "type": "text",
+    "fileName": "bulk-a.txt",
+    "creatorId": "key-2",
+    "creatorProfile": {
+      "creatorId": "key-2",
+      "displayName": "Pro Demo Key",
+      "credibilityScore": 63,
+      "riskLevel": "medium",
+      "verifiedBadge": false,
+      "totalUploads": 1,
+      "verifiedCount": 0,
+      "flaggedCount": 0,
+      "contentHistory": [
+        "cc52649c7a4646f0b70d51b6df6db8bff344e19895011f364e8fa88187e95326"
+      ],
+      "historySummary": "Pro Demo Key is still building credibility across early submissions.",
+      "blockchainIdentityId": "7C36B0A9DEDDE119",
+      "identityStatus": "queued"
+    },
+    "embedding": [
+      -0.04911671514525427,
+      0.32000284109786875,
+      0.2545138875708631,
+      -0.2545138875708631,
+      -0.19497847527358514,
+      0.22176941080736018,
+      0.1116288980573961,
+      0.17711785158440174,
+      0.3557240884762355,
+      0.22474618142222408,
+      -0.19200170465872127,
+      -0.0431631739155265,
+      -0.03720963268579869,
+      -0.13841983359117116,
+      -0.3676311709356911,
+      0.1652107691249462,
+      -0.07888442129389325,
+      -0.08186119190875712,
+      0.06995410944930155,
+      -0.23963003449654358,
+      -0.06995410944930155,
+      0.0014883853074319424,
+      -0.370607941550555,
+      0.13544306297630726
+    ],
+    "truthScore": 67,
+    "confidence": 71,
+    "executiveSummary": "The model ensemble is split, so this result should be treated as cautionary rather than final.",
+    "explanation": "GROQ: Rapid triage found mixed or limited signals and handed the content to deeper models. OPENROUTER: Deep reasoning found unresolved evidence gaps, so the content remains in a caution state. NEMOTRON: Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+    "findings": [
+      "viral framing detected",
+      "low prior-cluster similarity",
+      "visual comparison prompts prepared"
+    ],
+    "suspiciousSignals": [
+      "viral framing detected"
+    ],
+    "detectedClaims": [
+      "Miracle cure goes viral again"
+    ],
+    "modelBreakdown": [
+      {
+        "provider": "groq",
+        "model": "demo-groq-fastlane",
+        "role": "Fast triage and summarization",
+        "verdict": "uncertain",
+        "truthScore": 69,
+        "confidence": 69,
+        "summary": "Rapid triage found mixed or limited signals and handed the content to deeper models.",
+        "signals": [
+          "viral framing detected"
+        ],
+        "weight": 1.05,
+        "latencyMs": 4,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "openrouter",
+        "model": "demo-gpt-oss",
+        "role": "Deep reasoning and explanation",
+        "verdict": "uncertain",
+        "truthScore": 67,
+        "confidence": 80,
+        "summary": "Deep reasoning found unresolved evidence gaps, so the content remains in a caution state.",
+        "signals": [
+          "viral framing detected"
+        ],
+        "weight": 1.35,
+        "latencyMs": 3,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "nemotron",
+        "model": "nemotron-embed-sim",
+        "role": "Embeddings and semantic similarity",
+        "verdict": "real",
+        "truthScore": 78,
+        "confidence": 60,
+        "summary": "Embedding similarity did not find a strong existing cluster, so novelty remains relatively high.",
+        "signals": [
+          "low prior-cluster similarity"
+        ],
+        "weight": 1.15,
+        "latencyMs": 2,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "gemma",
+        "model": "gemma-factcheck-sim",
+        "role": "Fact-checking and contextual understanding",
+        "verdict": "uncertain",
+        "truthScore": 58,
+        "confidence": 77,
+        "summary": "Context analysis found partial grounding, but more source evidence would raise confidence.",
+        "signals": [
+          "viral framing detected"
+        ],
+        "weight": 1.2,
+        "latencyMs": 1,
+        "usedLiveApi": false
+      },
+      {
+        "provider": "flux",
+        "model": "flux-compare-visuals",
+        "role": "Comparison visual generation plan",
+        "verdict": "uncertain",
+        "truthScore": 50,
+        "confidence": 52,
+        "summary": "Generated a visual-comparison prompt pack for \"Miracle cure goes viral again...\" to contrast authentic versus manipulated features.",
+        "signals": [
+          "visual comparison prompts prepared"
+        ],
+        "weight": 0.15,
+        "latencyMs": 0,
+        "usedLiveApi": false
+      }
+    ],
+    "preprocessing": {
+      "contentHash": "cc52649c7a4646f0b70d51b6df6db8bff344e19895011f364e8fa88187e95326",
+      "mimeType": "text/plain",
+      "byteLength": 29,
+      "metadata": [
+        "bulk-a.txt",
+        "type:text"
+      ],
+      "sampledFrames": 0
+    },
+    "consensus": {
+      "label": "Consensus: mixed evidence",
+      "meter": 69,
+      "weightedTruthScore": 67,
+      "confidence": 71,
+      "basedOn": [
+        "groq",
+        "openrouter",
+        "nemotron",
+        "gemma",
+        "flux"
+      ]
+    },
+    "trustFingerprint": {
+      "truthScore": 67,
+      "manipulationRisk": "low",
+      "sourceCredibility": "medium",
+      "aiConsensus": 69,
+      "similarMatches": 0,
+      "confidence": 71,
+      "fingerprintId": "CC52649C7A4646F0"
+    },
+    "trustGraph": [],
+    "viralSignal": {
+      "repeatCount": 1,
+      "trendingScore": 25,
+      "status": "emerging",
+      "clusterLabel": "New narrative cluster"
+    },
+    "comparisonVisuals": [
+      {
+        "title": "Authentic vs manipulated comparison",
+        "description": "Prompt pack for side-by-side simulation of authentic and suspicious traits.",
+        "prompt": "Create a comparison board for a text submission showing authentic indicators on the left and suspicious indicators on the right: viral framing detected, low prior-cluster similarity, visual comparison prompts prepared."
+      },
+      {
+        "title": "Evidence overlay storyboard",
+        "description": "Storyboard prompt that highlights where reviewers should focus first.",
+        "prompt": "Generate a reviewer storyboard for text content that emphasizes: viral framing detected, low prior-cluster similarity, visual comparison prompts prepared."
+      }
+    ],
+    "timestamp": "2026-04-15T19:37:15.303Z",
+    "firstVerifiedAt": "2026-04-15T19:37:15.303Z",
+    "lastVerifiedAt": "2026-04-15T19:37:15.303Z",
+    "occurrenceCount": 1,
+    "previouslyVerified": false,
+    "blockchainStatus": "queued",
+    "transactionHash": "demo-62d0d0cb-5318-442d-9d3e-a9ff872c0366",
+    "sourcePreview": "Miracle cure goes viral again"
+  }
+]

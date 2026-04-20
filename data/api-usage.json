@@ -1,0 +1,50 @@
+[
+  {
+    "id": "key-1-1776281864554",
+    "principalId": "key-1",
+    "plan": "free",
+    "route": "/api/creator-reputation/creator_demo",
+    "method": "GET",
+    "timestamp": "2026-04-15T19:37:44.554Z"
+  },
+  {
+    "id": "key-1-1776281863266",
+    "principalId": "key-1",
+    "plan": "free",
+    "route": "/api/trust-score/7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a",
+    "method": "GET",
+    "timestamp": "2026-04-15T19:37:43.266Z"
+  },
+  {
+    "id": "key-3-1776281861563",
+    "principalId": "key-3",
+    "plan": "enterprise",
+    "route": "/api/analytics/report",
+    "method": "GET",
+    "timestamp": "2026-04-15T19:37:41.563Z"
+  },
+  {
+    "id": "key-1-1776281835347",
+    "principalId": "key-1",
+    "plan": "free",
+    "route": "/api/verify-content",
+    "method": "POST",
+    "timestamp": "2026-04-15T19:37:15.347Z"
+  },
+  {
+    "id": "key-2-1776281835287",
+    "principalId": "key-2",
+    "plan": "pro",
+    "route": "/api/bulk-verify",
+    "method": "POST",
+    "timestamp": "2026-04-15T19:37:15.287Z"
+  },
+  {
+    "id": "key-3-1776281835032",
+    "principalId": "key-3",
+    "plan": "enterprise",
+    "route": "/api/analytics/report",
+    "method": "GET",
+    "timestamp": "2026-04-15T19:37:15.032Z"
+  }
+]

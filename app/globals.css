@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top, rgba(34, 211, 238, 0.18), transparent 24%),
+    radial-gradient(circle at 85% 10%, rgba(139, 92, 246, 0.16), transparent 24%),
+    linear-gradient(180deg, #0b0f1a 0%, #0d1320 100%);
+  color: #e5eef9;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(12, 18, 34, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(12, 18, 34, 0.2) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.65), transparent);
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+input,
+textarea,
+[role="button"] {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 220ms ease,
+    transform 180ms ease;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  border-color: rgba(56, 189, 248, 0.42);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.18), 0 0 0 6px rgba(34, 211, 238, 0.08);
+}
+
+.panel {
+  border: 1px solid rgba(57, 72, 101, 0.55);
+  background: linear-gradient(180deg, rgba(18, 25, 41, 0.78), rgba(12, 18, 31, 0.82));
+  backdrop-filter: blur(18px);
+  box-shadow: 0 14px 44px rgba(5, 10, 20, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.panel-hover {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.panel-hover:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(96, 165, 250, 0.38);
+  box-shadow: 0 18px 56px rgba(6, 12, 24, 0.42), 0 0 0 1px rgba(96, 165, 250, 0.06), 0 0 36px rgba(96, 165, 250, 0.12);
+}
+
+.metric-ring {
+  background: conic-gradient(#16a34a var(--value), rgba(38, 50, 71, 0.5) 0);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  animation: shimmer 1.8s infinite;
+}
+
+.shimmer-soft {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-soft::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  animation: shimmer 1.6s infinite;
+}
+
+.gradient-spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #38bdf8;
+  border-right-color: #8b5cf6;
+  animation: spin 0.8s linear infinite;
+}
+
+.interactive-glow {
+  box-shadow: 0 0 0 rgba(56, 189, 248, 0);
+}
+
+.interactive-glow:hover {
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.08), 0 0 28px rgba(56, 189, 248, 0.14);
+}
+
+.error-shake {
+  animation: shake 0.32s ease-in-out;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+}

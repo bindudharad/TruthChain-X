@@ -1,0 +1,9 @@
+.next
+node_modules
+.env.local
+dist
+artifacts
+cache
+typechain-types
+uploads
+data/generated

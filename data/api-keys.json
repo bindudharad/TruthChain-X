@@ -1,0 +1,35 @@
+[
+  {
+    "id": "key-1",
+    "label": "Free Demo Key",
+    "keyHash": "299af2fd4c7d5a8702fd8842bd5d9bbf7309ececa034dd800183b7944a90c6b1",
+    "plan": "free",
+    "active": true,
+    "monthlyQuota": 1000,
+    "requestsUsed": 3,
+    "createdAt": "2026-04-15T19:34:55.559Z",
+    "lastUsedAt": "2026-04-15T19:37:44.554Z"
+  },
+  {
+    "id": "key-2",
+    "label": "Pro Demo Key",
+    "keyHash": "91ea5d70aac9558cb354a9fc802543f394d1dfe1132fad0438532192621a78d5",
+    "plan": "pro",
+    "active": true,
+    "monthlyQuota": 10000,
+    "requestsUsed": 1,
+    "createdAt": "2026-04-15T19:34:55.559Z",
+    "lastUsedAt": "2026-04-15T19:37:15.287Z"
+  },
+  {
+    "id": "key-3",
+    "label": "Enterprise Demo Key",
+    "keyHash": "a5ee15973331a05fdf34481b7db8efad3db0a2dbada0cf17cec091367e4567b7",
+    "plan": "enterprise",
+    "active": true,
+    "monthlyQuota": 200000,
+    "requestsUsed": 2,
+    "createdAt": "2026-04-15T19:34:55.559Z",
+    "lastUsedAt": "2026-04-15T19:37:41.563Z"
+  }
+]

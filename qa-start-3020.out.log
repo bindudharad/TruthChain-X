@@ -1,0 +1,20 @@
+
+> truthchain-ai@0.1.0 start
+> next start --port 3020
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3020
+   - Network:      http://10.199.236.43:3020
+
+ ✓ Starting...
+ ✓ Ready in 1498ms
+[TruthChain Server] Content analysis completed {
+  hash: '88fbc78c382d281b24646571a8c6bf8f2c9098538d7e599cf62c7d44a0625867',
+  creatorId: 'creator-demo',
+  truthScore: 68
+}
+[TruthChain Server] Content analysis completed {
+  hash: '13ad0102a04113f38d313de01f676073450ac8f96695628638cbb2be8746d2a1',
+  creatorId: 'creator_demo',
+  truthScore: 75
+}

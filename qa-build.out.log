@@ -1,0 +1,60 @@
+
+> truthchain-ai@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.15
+   - Experiments (use with caution):
+     · serverActions
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 14.1s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/26) ...
+   Generating static pages (6/26) 
+   Generating static pages (12/26) 
+   Generating static pages (19/26) 
+ ✓ Generating static pages (26/26)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      144 B         282 kB
+├ ○ /_not-found                             1 kB         103 kB
+├ ○ /analytics                           1.44 kB         151 kB
+├ ○ /api-hub                             2.31 kB         148 kB
+├ ƒ /api/alerts                            194 B         102 kB
+├ ƒ /api/analytics/report                  194 B         102 kB
+├ ƒ /api/analyze                           194 B         102 kB
+├ ƒ /api/assistant                         194 B         102 kB
+├ ƒ /api/auth/demo-login                   194 B         102 kB
+├ ƒ /api/bulk-verify                       194 B         102 kB
+├ ƒ /api/community-vote                    194 B         102 kB
+├ ƒ /api/creator-reputation/[id]           194 B         102 kB
+├ ƒ /api/creator-score                     194 B         102 kB
+├ ƒ /api/health                            194 B         102 kB
+├ ƒ /api/history                           194 B         102 kB
+├ ƒ /api/passport/[id]                     194 B         102 kB
+├ ƒ /api/risk-dashboard                    194 B         102 kB
+├ ƒ /api/similarity-check                  194 B         102 kB
+├ ƒ /api/tamper-demo                       194 B         102 kB
+├ ƒ /api/trust-feed                        194 B         102 kB
+├ ƒ /api/trust-score                       194 B         102 kB
+├ ƒ /api/trust-score/[id]                  194 B         102 kB
+├ ƒ /api/trust/[hash]                      194 B         102 kB
+├ ƒ /api/user/[id]                         194 B         102 kB
+├ ƒ /api/user/update-score                 194 B         102 kB
+├ ƒ /api/verify                            194 B         102 kB
+├ ƒ /api/verify-content                    194 B         102 kB
+├ ○ /dashboard                             144 B         282 kB
+├ ƒ /passport/[id]                         167 B         106 kB
+└ ○ /reports                             3.04 kB         149 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/1255-55f5611cfd370a3f.js      45.7 kB
+  ├ chunks/4bd1b696-100b9d70ed4e49c1.js  54.2 kB
+  └ other shared chunks (total)          2.15 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

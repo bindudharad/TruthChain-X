@@ -1,0 +1,41 @@
+{
+  "name": "truthchain-ai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node .next/standalone/server.js",
+    "lint": "next lint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "seed": "tsx scripts/seed.ts",
+    "chain:compile": "hardhat compile",
+    "chain:deploy": "hardhat run scripts/deploy.ts --network polygonAmoy"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "ethers": "^6.13.4",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.469.0",
+    "mongoose": "^8.8.4",
+    "next": "^15.1.4",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "autoprefixer": "^10.4.20",
+    "hardhat": "^2.22.17",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

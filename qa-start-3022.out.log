@@ -1,0 +1,10 @@
+
+> truthchain-ai@0.1.0 start
+> node .next/standalone/server.js
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3022
+   - Network:      http://0.0.0.0:3022
+
+ ✓ Starting...
+ ✓ Ready in 683ms
