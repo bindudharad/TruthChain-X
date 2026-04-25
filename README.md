@@ -352,4 +352,5 @@ Then move long-running AI tasks onto a queue such as RabbitMQ or Kafka.
 - Identity, analytics, and usage tracking are part of the core system
 - The architecture can evolve into microservices without rewriting the product
 #   T r u t h C h a i n X  
+ #   T r u t h C h a i n X  
  
