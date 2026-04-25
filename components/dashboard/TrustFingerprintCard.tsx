@@ -52,14 +52,15 @@ export function TrustFingerprintCard({
       <div className="pointer-events-none absolute inset-0 rounded-lg opacity-80" style={{ boxShadow: `inset 0 0 60px ${glow}` }} />
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/80">Trust Fingerprint</p>
-          <p className="mt-2 text-2xl font-semibold text-white">Digital trust identity</p>
-          <p className="mt-2 text-sm text-slate-400">Live confidence model with manipulation risk, source credibility, and content matching signals.</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/80">Phishing Risk Signature</p>
+          <p className="mt-2 text-2xl font-semibold text-white">Digital phishing identity</p>
+          <p className="mt-2 text-sm text-slate-400">Live confidence model with manipulation risk, URL credibility, and content matching signals.</p>
         </div>
         <motion.span
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.25 }}
+          suppressHydrationWarning
           className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300 shadow-[0_0_24px_rgba(56,189,248,0.12)]"
         >
           Confidence {confidence}%
@@ -79,8 +80,8 @@ export function TrustFingerprintCard({
           </svg>
           <div className="absolute inset-0 grid place-items-center text-center">
             <div className="rounded-full border border-white/10 bg-slate-950/45 px-8 py-7 shadow-[0_0_35px_rgba(14,165,233,0.12)]">
-              <motion.span className="block text-5xl font-semibold text-white">{label}</motion.span>
-              <span className="text-xs uppercase tracking-[0.28em] text-slate-400">Truth Score</span>
+              <motion.span suppressHydrationWarning className="block text-5xl font-semibold text-white">{label}</motion.span>
+              <span className="text-xs uppercase tracking-[0.28em] text-slate-400">Risk Confidence</span>
             </div>
           </div>
         </div>
@@ -102,11 +103,11 @@ export function TrustFingerprintCard({
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-500">AI Consensus</p>
-            <p className="mt-3 text-2xl font-semibold text-white">{consensus}%</p>
+            <p suppressHydrationWarning className="mt-3 text-2xl font-semibold text-white">{consensus}%</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }} className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Similar Matches</p>
-            <p className="mt-3 text-2xl font-semibold text-white">{matches}</p>
+            <p suppressHydrationWarning className="mt-3 text-2xl font-semibold text-white">{matches}</p>
           </motion.div>
         </div>
       </div>

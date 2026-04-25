@@ -1,0 +1,160 @@
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module './5873.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\webpack-runtime.js
+- C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7821)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\app\api\analyze\route.js:1:7868) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/api/analyze'
+}

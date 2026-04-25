@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "TruthChain-X",
+  "version": "0.1.0",
+  "description": "Real-time phishing detection and protection.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "TruthChain-X",
+    "default_popup": "popup.html"
+  }
+}

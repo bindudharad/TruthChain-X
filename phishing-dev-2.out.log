@@ -1,0 +1,15 @@
+
+> truthchain-ai@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3001
+   - Network:      http://10.134.76.43:3001
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 5s
+ ○ Compiling /api/analyze ...
+ ✓ Compiled /api/analyze in 2.7s (527 modules)
+ POST /api/analyze 200 in 4534ms

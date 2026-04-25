@@ -1,0 +1,11 @@
+[
+  {
+    "id": "7ae4b6dd-92f9-4757-b5d2-816da078a6cc",
+    "createdAt": "2026-04-23T08:48:25.038Z",
+    "matchId": "demo-match",
+    "hash": "demo-match",
+    "reason": "Demo phishing report",
+    "action": "report",
+    "platform": "TruthChain"
+  }
+]

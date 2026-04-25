@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { Card } from "@/components/ui/Card";
+import { useMounted } from "@/hooks/useMounted";
 
 const LineChartComponent = dynamic(() => import("@/components/charts/LineChartComponent").then((mod) => mod.LineChartComponent), {
   ssr: false
@@ -17,6 +18,7 @@ type GraphRecord = {
 };
 
 export function Graphs({ records }: { records: GraphRecord[] }) {
+  const mounted = useMounted();
   const [window, setWindow] = useState<"all" | "recent">("all");
   const source = useMemo(() => (window === "recent" ? records.slice(0, 6) : records), [records, window]);
   const hasRecords = source.length > 0;
@@ -27,10 +29,12 @@ export function Graphs({ records }: { records: GraphRecord[] }) {
         .slice()
         .reverse()
         .map((record) => ({
-          label: new Date(record.timestamp).toLocaleDateString(undefined, { month: "short", day: "numeric" }),
+          label: mounted
+            ? new Date(record.timestamp).toLocaleDateString(undefined, { month: "short", day: "numeric" })
+            : record.timestamp.slice(5, 10),
           score: record.score
         })),
-    [source]
+    [mounted, source]
   );
 
   const distribution = useMemo(

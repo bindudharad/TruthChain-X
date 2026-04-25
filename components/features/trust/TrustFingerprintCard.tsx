@@ -29,16 +29,16 @@ function TrustFingerprintCardBase({
     <Card className="relative bg-[linear-gradient(135deg,rgba(34,211,238,0.14),rgba(99,102,241,0.12)_42%,rgba(9,19,31,0.26))]">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/80">Trust Fingerprint</p>
-          <p className="mt-2 text-2xl font-semibold text-white">Digital trust identity</p>
-          <p className="mt-2 text-sm text-slate-400">Reusable trust artifact generated from AI consensus, provenance signals, and similarity analysis.</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/80">Phishing Risk Signature</p>
+          <p className="mt-2 text-2xl font-semibold text-white">Digital phishing profile</p>
+          <p className="mt-2 text-sm text-slate-400">Reusable phishing artifact generated from AI consensus, URL heuristics, and similarity analysis.</p>
         </div>
         <Badge tone="info">Confidence {safeConfidence}%</Badge>
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[0.9fr,1.1fr]">
         <div className="justify-self-center">
-          <RadialProgress value={safeScore} label="Truth Score" size={224} />
+          <RadialProgress value={safeScore} label="Risk Confidence" size={224} />
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">

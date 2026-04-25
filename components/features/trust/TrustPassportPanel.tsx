@@ -1,11 +1,12 @@
 "use client";
 
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import QRCode from "qrcode";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { ClientDateText } from "@/components/ui/ClientDateText";
 import { api } from "@/services/api";
 
 function TrustPassportPanelBase({
@@ -22,7 +23,12 @@ function TrustPassportPanelBase({
   const [qr, setQr] = useState("");
   const [timestamp, setTimestamp] = useState("");
   const [summary, setSummary] = useState("");
-  const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/passport/${hash}` : `https://truthchainx.app/passport/${hash}`;
+  const [origin, setOrigin] = useState("");
+  const shareUrl = useMemo(() => `${origin || "https://truthchainx.app"}/passport/${hash}`, [hash, origin]);
+
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   useEffect(() => {
     QRCode.toDataURL(shareUrl, { margin: 1, width: 180 }).then(setQr).catch(() => setQr(""));
@@ -60,7 +66,12 @@ function TrustPassportPanelBase({
         <div className="space-y-3">
           <PassportRow label="Fingerprint ID" value={fingerprintId} />
           <PassportRow label="Truth Score" value={`${score}%`} />
-          <PassportRow label="First Verified" value={timestamp ? new Date(timestamp).toLocaleString() : "Loading..."} />
+          <PassportRow
+            label="First Verified"
+            value={
+              timestamp ? <ClientDateText value={timestamp} fallbackLabel={timestamp.replace("T", " ").slice(0, 16)} /> : "Loading..."
+            }
+          />
           <PassportRow label="Content Hash" value={hash} mono />
           <PassportRow label="Transaction" value={txHash} mono />
           <PassportRow label="Content Summary" value={summary || "Loading summary..."} />
@@ -87,7 +98,7 @@ function TrustPassportPanelBase({
   );
 }
 
-function PassportRow({ label, value, mono = false }: { label: string; value: string; mono?: boolean }) {
+function PassportRow({ label, value, mono = false }: { label: string; value: React.ReactNode; mono?: boolean }) {
   return (
     <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
       <p className="text-xs uppercase tracking-[0.22em] text-slate-500">{label}</p>

@@ -18,15 +18,15 @@ export default function ExtensionPreview({ verdict, score, message }: ExtensionP
   return (
     <motion.div whileHover={{ y: -2 }} className="panel rounded-lg p-6">
       <div className="mb-5">
-        <p className="text-lg font-semibold text-white">Browser Trust Preview</p>
-        <p className="text-sm text-slate-400">A production-style extension preview showing how live trust feedback can appear beside content before someone reshapes or reposts it.</p>
+        <p className="text-lg font-semibold text-white">Browser Threat Preview</p>
+        <p className="text-sm text-slate-400">A production-style extension preview showing how live phishing feedback can appear before a user submits credentials or shares a risky page.</p>
       </div>
 
       <div className="mx-auto w-full max-w-sm rounded-lg border border-white/10 bg-[#0F172A] p-4 shadow-[0_18px_60px_rgba(8,15,28,0.45)]">
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <p className="text-sm font-semibold text-white">TruthChain X</p>
-            <p className="text-xs text-slate-400">Live page trust signal</p>
+            <p className="text-sm font-semibold text-white">TruthChain-X</p>
+            <p className="text-xs text-slate-400">Live page phishing signal</p>
           </div>
           <span className={`rounded-full border px-2.5 py-1 text-xs ${badgeTone(verdict)}`}>
             {verdict === "warning" ? "Likely Fake" : "Likely Safe"}
@@ -34,7 +34,7 @@ export default function ExtensionPreview({ verdict, score, message }: ExtensionP
         </div>
 
         <div className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
-          <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Trust Score</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Phishing Risk Score</p>
           <div className="mt-3 flex items-end justify-between gap-4">
             <p className="text-3xl font-semibold text-white">{score}%</p>
             <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/5">
@@ -51,10 +51,10 @@ export default function ExtensionPreview({ verdict, score, message }: ExtensionP
 
         <div className="mt-4 grid gap-2">
           <div className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs text-slate-300">
-            Fingerprint history, creator reputation, and blockchain proof can all open from this surface.
+            Risk signature history, page context, and supporting evidence can all open from this surface.
           </div>
           <button className="rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-sm font-medium text-white transition hover:bg-white/[0.08]">
-            {verdict === "warning" ? "Review evidence" : "Open trust passport"}
+            {verdict === "warning" ? "Review evidence" : "Open scan details"}
           </button>
         </div>
       </div>

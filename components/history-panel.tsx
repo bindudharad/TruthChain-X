@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { VerificationRecord } from "@/lib/types";
+import { ClientDateText } from "@/components/ui/ClientDateText";
 
 export function HistoryPanel({
   records,
@@ -37,7 +38,7 @@ export function HistoryPanel({
                 <div className="flex items-center justify-between gap-4 px-4 py-4">
                   <button className="min-w-0 flex-1 text-left" onClick={() => handleToggle(record, isOpen)}>
                     <p className="truncate text-sm font-medium text-slate-100">{record.fileName}</p>
-                    <p className="mt-1 text-xs text-slate-500">{new Date(record.timestamp).toLocaleString()}</p>
+                    <ClientDateText value={record.timestamp} fallbackLabel={record.timestamp.replace("T", " ").slice(0, 16)} className="mt-1 text-xs text-slate-500" />
                   </button>
                   <div className="flex items-center gap-3">
                     <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-slate-300">{record.truthScore}%</span>

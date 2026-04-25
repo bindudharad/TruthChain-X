@@ -2,36 +2,118 @@
   {
     "creatorId": "creator_demo",
     "displayName": "Demo Creator",
-    "credibilityScore": 50,
-    "riskLevel": "medium",
+    "credibilityScore": 98,
+    "riskLevel": "low",
     "verifiedBadge": false,
-    "totalUploads": 7,
-    "verifiedCount": 3,
+    "totalUploads": 123,
+    "verifiedCount": 112,
     "flaggedCount": 4,
     "contentHistory": [
-      "13ad0102a04113f38d313de01f676073450ac8f96695628638cbb2be8746d2a1",
-      "7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a",
-      "manual-hash-2",
-      "manual-hash-1"
+      "b37a514990cffd2031b35b832ccaba21e9aa36ba138f0fa8b100dde06741333f",
+      "60169688e6310a30960f71665419f2c083b7a14216d02c9dc0a3ed34641e287d",
+      "78fd077bbca21a4b6961facd8d8dc61c9b4313b3d8acb7f725b422b92d67e135",
+      "958843a8d59ddb19f227dac50f3bca8d82a78866411b27be8e3f1f123b5ed12d",
+      "cf37e61482196f3b9f808ceb3a9a86961411088981c34f97a0e5abf91a92a260",
+      "f2f48e40c226520e1af9140d03e3357e2a00d7c991463974b19a33d28fb77324",
+      "7a8db0fb1358cc45f330484eab31f3f542a67377759422450d8de70fd61649c9",
+      "de2b2edf64426fa8cf9a38ba1e427a554538d22c1ee70ec0137b5038303c1df9"
     ],
-    "historySummary": "Demo Creator has a risky publishing pattern with more flagged than trusted submissions.",
+    "historySummary": "Demo Creator has 112 trusted items and 4 flagged items on record.",
     "blockchainIdentityId": "C1C5F66245D9846F",
     "identityStatus": "queued"
   },
   {
-    "creatorId": "creator-demo",
-    "displayName": "Demo Creator",
-    "credibilityScore": 63,
+    "creatorId": "qr_scanner",
+    "displayName": "QR Scanner",
+    "credibilityScore": 98,
+    "riskLevel": "low",
+    "verifiedBadge": true,
+    "totalUploads": 22,
+    "verifiedCount": 22,
+    "flaggedCount": 0,
+    "contentHistory": [
+      "c6aba3895d1ca67c373530a3ed713411f82bc0011d45b931f99ece7006a0a81e",
+      "d20d65b033e96c95535ea1f88cef86177de822f826bcc08ee251fb42131356d2",
+      "1c699a4b7cb3275e333c5624a5cc32b70077d3eac00863975df3792e3ab20af3",
+      "21873373808190e36f02ae76726a2002d6de37009927b9ab893baa0231c82e5d",
+      "855b4f102e09daeb97bc225351902fa28305d9368291ff3b5814025bbdcec685",
+      "5145a442618581360c885a7c7d3ecf5df38c402f4e80b30d3416c1688a5a204f",
+      "886a4978d897f0880ee262f4ae7a31dbc6ed5a39695779b80ae6dd01be2e66d0",
+      "f72fbd32c0b68021ebf819aed9106a05e0930eb5c3c221e16106928e59fe2ad7"
+    ],
+    "historySummary": "QR Scanner has 22 trusted items and 0 flagged items on record.",
+    "blockchainIdentityId": "A4F700EBED66BB44",
+    "identityStatus": "queued"
+  },
+  {
+    "creatorId": "quick_test",
+    "displayName": "Quick Test",
+    "credibilityScore": 70,
+    "riskLevel": "low",
+    "verifiedBadge": false,
+    "totalUploads": 1,
+    "verifiedCount": 1,
+    "flaggedCount": 0,
+    "contentHistory": [
+      "c9fb80a4a631bce217b3e84dcb3338bae04bc1091f4f558c4d45cf16e190603d"
+    ],
+    "historySummary": "Quick Test has 1 trusted items and 0 flagged items on record.",
+    "blockchainIdentityId": "049BB618A05F61C2",
+    "identityStatus": "queued"
+  },
+  {
+    "creatorId": "test",
+    "displayName": "Tester",
+    "credibilityScore": 86,
+    "riskLevel": "low",
+    "verifiedBadge": true,
+    "totalUploads": 3,
+    "verifiedCount": 3,
+    "flaggedCount": 0,
+    "contentHistory": [
+      "6de73954f27ba56e2608450257c5b0150c690de1105ab68303567b70c70c4fef",
+      "98d0441fb0a43a5c0dbf4e37e4efe2dcad9caed2f5df107caf7439c89797f57b"
+    ],
+    "historySummary": "Tester has 3 trusted items and 0 flagged items on record.",
+    "blockchainIdentityId": "9F86D081884C7D65",
+    "identityStatus": "queued"
+  },
+  {
+    "creatorId": "tester",
+    "displayName": "Tester",
+    "credibilityScore": 98,
+    "riskLevel": "low",
+    "verifiedBadge": true,
+    "totalUploads": 7,
+    "verifiedCount": 7,
+    "flaggedCount": 0,
+    "contentHistory": [
+      "91efad906456e1962618d4a0497ac758c216333d78f9bb8bd14fe0a705b74a10",
+      "9bb7554668765a57ff0303d661069f86d0e745af7386162731d06ddd839732b6",
+      "718691081dac727d9cc0763c63b1bbefd066010f88f52a26842a542550b8ec12",
+      "5456ffc3e32635312bbeaa3687a243fbbf42c0e0a4ff7d2e472627da80bce27d",
+      "28ed563688184ee09dc0ef3c2a26864dcb98ebc2f909e60665a6b76a516bd700",
+      "57eb0a113f2619cb09140b8937c0acd72d29db04267b7f92e488486673597832",
+      "90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f"
+    ],
+    "historySummary": "Tester has 7 trusted items and 0 flagged items on record.",
+    "blockchainIdentityId": "9BBA5C53A0545E0C",
+    "identityStatus": "queued"
+  },
+  {
+    "creatorId": "qa_user",
+    "displayName": "QA User",
+    "credibilityScore": 53,
     "riskLevel": "medium",
     "verifiedBadge": false,
     "totalUploads": 1,
     "verifiedCount": 0,
-    "flaggedCount": 0,
+    "flaggedCount": 1,
     "contentHistory": [
-      "88fbc78c382d281b24646571a8c6bf8f2c9098538d7e599cf62c7d44a0625867"
+      "7ae760b20d11e448615927d55a7d98434bf78cf965e32bf38d047d9c7be5a39a"
     ],
-    "historySummary": "Demo Creator is still building credibility across early submissions.",
-    "blockchainIdentityId": "C8E1F7ABCE05C08F",
+    "historySummary": "QA User has a risky publishing pattern with more flagged than trusted submissions.",
+    "blockchainIdentityId": "F431DBF403DA17BD",
     "identityStatus": "queued"
   },
   {

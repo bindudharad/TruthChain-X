@@ -40,9 +40,9 @@ export function TrustFingerprintCard({
     <div className="panel rounded-lg p-6">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.28em] text-cyan-200/80">Trust fingerprint</p>
-          <h2 className="mt-2 text-2xl font-semibold text-white">Digital trust identity</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-300">A permanent fingerprint of credibility, manipulation risk, source trust, and consensus.</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-cyan-200/80">Phishing risk signature</p>
+          <h2 className="mt-2 text-2xl font-semibold text-white">Digital phishing identity</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-300">A reusable signature of credibility, manipulation risk, URL trust, and consensus.</p>
         </div>
         <div className="rounded-lg border border-cyan-400/20 bg-cyan-400/10 p-3 text-cyan-100">
           <Fingerprint className="h-5 w-5" />
@@ -84,9 +84,9 @@ export function TrustFingerprintCard({
           <p className="mt-3 break-all font-mono text-sm text-slate-100">{fingerprint.fingerprintId}</p>
           {qrUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={qrUrl} alt="Trust fingerprint QR" className="mt-4 h-36 w-36 rounded-lg border border-white/10 bg-white p-2" />
+            <img src={qrUrl} alt="Phishing risk signature QR" className="mt-4 h-36 w-36 rounded-lg border border-white/10 bg-white p-2" />
           ) : null}
-          <p className="mt-4 text-xs leading-6 text-slate-500">Scan to verify the trust fingerprint and associated content hash.</p>
+          <p className="mt-4 text-xs leading-6 text-slate-500">Scan to verify the phishing risk signature and associated content hash.</p>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ import {
   IntelligenceRegion,
   VerificationRecord
 } from "@/lib/types";
-import { buildTrendingAlerts, getCreatorProfile, listCreatorProfiles, listVerifications } from "@/lib/db";
+import { getCreatorProfile, listCreatorProfiles, listVerifications } from "@/lib/db";
 import { clamp } from "@/services/ai/shared";
 
 type IntelligenceContext = {
@@ -25,7 +25,7 @@ const regionPositions: Record<string, { x: string; y: string }> = {
   Africa: { x: "52%", y: "58%" },
   "South America": { x: "32%", y: "66%" },
   Oceania: { x: "82%", y: "68%" },
-  Cross-platform: { x: "50%", y: "50%" }
+  "Cross-platform": { x: "50%", y: "50%" }
 };
 
 function classifyRegion(record: VerificationRecord, index: number) {
@@ -56,12 +56,13 @@ function buildRegions(records: VerificationRecord[]): IntelligenceRegion[] {
   return Array.from(regionMap.entries())
     .map(([region, value]) => {
       const intensity = clamp(Math.round(value.sum / Math.max(value.count, 1)), 24, 95);
+      const riskLevel: IntelligenceRegion["riskLevel"] = intensity > 74 ? "high" : intensity > 48 ? "medium" : "low";
       return {
         region,
         x: regionPositions[region]?.x || "50%",
         y: regionPositions[region]?.y || "50%",
         intensity,
-        riskLevel: intensity > 74 ? "high" : intensity > 48 ? "medium" : "low",
+        riskLevel,
         activeClusters: Math.max(1, value.highRisk + Math.round(value.count / 2))
       };
     })
@@ -182,7 +183,7 @@ function buildLineage(primary: VerificationRecord | null): IntelligenceLineageSt
   return [
     { stage: "Origin", label: `${primary.fileName} first appears in source channel ${primary.creatorId}.`, timestamp: new Date(baseTime).toISOString() },
     { stage: "Shared", label: "Copied into adjacent social and messaging streams.", timestamp: new Date(baseTime + 20 * 60 * 1000).toISOString() },
-    { stage: "Modified", label: "Narrative structure mutates while preserving the original trust fingerprint.", timestamp: new Date(baseTime + 45 * 60 * 1000).toISOString() },
+    { stage: "Modified", label: "Narrative structure mutates while preserving the original phishing risk signature.", timestamp: new Date(baseTime + 45 * 60 * 1000).toISOString() },
     { stage: "Viral", label: `Viral signal climbs to ${primary.viralSignal.trendingScore}% across monitored regions.`, timestamp: new Date(baseTime + 70 * 60 * 1000).toISOString() },
     { stage: "Flagged", label: "The platform marks the cluster as suspicious and routes it to the intelligence layer.", timestamp: new Date(baseTime + 95 * 60 * 1000).toISOString() }
   ];
@@ -203,6 +204,17 @@ function buildFeed(records: VerificationRecord[]): IntelligenceFeedItem[] {
 function buildAlerts(regions: IntelligenceRegion[], records: VerificationRecord[]): IntelligenceAlert[] {
   const regionAlert = regions[0];
   const clusterRecord = records.find((record) => record.truthScore < 40) || records[0];
+
+  if (!clusterRecord) {
+    return [
+      {
+        id: "intel-default-alert",
+        title: "Intelligence engine is ready",
+        detail: "Analyze content to populate global misinformation alerts and cluster tracking.",
+        severity: "low"
+      }
+    ];
+  }
 
   return [
     {

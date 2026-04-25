@@ -1,4 +1,4 @@
-# TruthChain X API Reference
+# TruthChain-X API Reference
 
 ## Auth
 
@@ -11,11 +11,11 @@ Provide one of:
 
 ### POST `/api/verify-content`
 
-Verifies one content item and returns a full trust fingerprint payload.
+Verifies one content item and returns a full phishing risk signature payload.
 
 ### GET `/api/trust-score/{id}`
 
-Returns the stored trust fingerprint for a content hash.
+Returns the stored phishing risk signature for a content hash.
 
 ### GET `/api/creator-reputation/{id}`
 

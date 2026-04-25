@@ -1,8 +1,24 @@
-import { AnalysisInput, AnalysisResult, ComparisonVisual, ConsensusReport, TrustGraphLink, VerificationRecord, ViralSignal } from "@/lib/types";
+import {
+  AnalysisInput,
+  AnalysisResult,
+  ComparisonVisual,
+  ConsensusReport,
+  ExplainabilityFactor,
+  FactTimelineStep,
+  OpenSourceSignal,
+  TrustGraphLink,
+  VerificationRecord,
+  ViralSignal
+} from "@/lib/types";
 import { tokenSimilarity } from "@/services/ensembleEngine";
 import { hashContent } from "@/lib/hashing";
+import { ANALYSIS_REVISION } from "@/lib/analysis-version";
 import { runAiOrchestration } from "@/server/services/ensemble/engine";
 import { detectLanguageSignal } from "@/lib/language";
+import { collectOpenSourceSignals } from "@/services/research/openSourceTruthEngine";
+import { buildAIDetection, buildMediaAnalysis, detectSensitiveContent } from "@/services/media-analysis";
+import { buildUnifiedTrustResult } from "@/services/trust-intelligence";
+import { analyzeClaimVerification } from "@/services/research/claimVerification";
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
@@ -10,6 +26,14 @@ function clamp(value: number, min: number, max: number) {
 
 function unique(values: string[]) {
   return [...new Set(values.filter(Boolean))];
+}
+
+function safely<T>(factory: () => T, fallback: T) {
+  try {
+    return factory();
+  } catch {
+    return fallback;
+  }
 }
 
 function buildConsensus(scores: Array<{ score: number; confidence: number; provider: string; weight: number }>): ConsensusReport {
@@ -80,8 +104,117 @@ function levelFromScore(value: number, inverted = false) {
   return "high" as const;
 }
 
+function buildExplainabilityFactors({
+  truthScore,
+  sourceCredibilityScore,
+  historyScore,
+  similarityScore,
+  openSourceScore
+}: {
+  truthScore: number;
+  sourceCredibilityScore: number;
+  historyScore: number;
+  similarityScore: number;
+  openSourceScore: number;
+}): ExplainabilityFactor[] {
+  const rows: ExplainabilityFactor[] = [
+    {
+      label: "AI Analysis",
+      value: truthScore,
+      weight: 0.4,
+      impact: truthScore >= 60 ? "positive" : truthScore < 40 ? "negative" : "neutral",
+      detail: "Model ensemble confidence after multi-provider reasoning and verification."
+    },
+    {
+      label: "Source Credibility",
+      value: sourceCredibilityScore,
+      weight: 0.2,
+      impact: sourceCredibilityScore >= 60 ? "positive" : sourceCredibilityScore < 40 ? "negative" : "neutral",
+      detail: "Source behavior and credibility patterns weighted into the score."
+    },
+    {
+      label: "History",
+      value: historyScore,
+      weight: 0.15,
+      impact: historyScore >= 60 ? "positive" : historyScore < 40 ? "negative" : "neutral",
+      detail: "Prior appearances and historical trust performance across stored records."
+    },
+    {
+      label: "Similarity",
+      value: similarityScore,
+      weight: 0.1,
+      impact: similarityScore >= 60 ? "negative" : similarityScore < 40 ? "positive" : "neutral",
+      detail: "How strongly the content resembles previously indexed risky narratives."
+    },
+    {
+      label: "Open-Source Signals",
+      value: openSourceScore,
+      weight: 0.15,
+      impact: openSourceScore >= 60 ? "positive" : openSourceScore < 40 ? "negative" : "neutral",
+      detail: "Signals aggregated from simulated newsroom, dataset, and community evidence."
+    }
+  ];
+
+  return rows;
+}
+
+function buildFactTimeline({
+  input,
+  trustGraph,
+  viralSignal,
+  weightedTruthScore
+}: {
+  input: AnalysisInput;
+  trustGraph: TrustGraphLink[];
+  viralSignal: ViralSignal;
+  weightedTruthScore: number;
+}): FactTimelineStep[] {
+  const now = Date.now();
+  return [
+    {
+      stage: "origin",
+      title: "Origin captured",
+      detail: `${input.fileName || `${input.type} submission`} entered the trust pipeline.`,
+      timestamp: new Date(now - 1000 * 60 * 18).toISOString(),
+      status: "complete"
+    },
+    {
+      stage: "spread",
+      title: "Spread detected",
+      detail:
+        trustGraph.length > 0
+          ? `${trustGraph.length} related narrative links suggest cross-posting or semantic reuse.`
+          : "No strong spread history found yet, but the item remains under watch.",
+      timestamp: new Date(now - 1000 * 60 * 10).toISOString(),
+      status: trustGraph.length > 0 ? "complete" : "watch"
+    },
+    {
+      stage: "flagged",
+      title: "Flagged for review",
+      detail:
+        viralSignal.trendingScore > 60
+          ? `Viral pressure reached ${viralSignal.trendingScore} and triggered an elevated moderation posture.`
+          : "The item entered analyst review because early risk signals crossed the caution threshold.",
+      timestamp: new Date(now - 1000 * 60 * 4).toISOString(),
+      status: "complete"
+    },
+    {
+      stage: "verified",
+      title: weightedTruthScore < 40 ? "Verified as high-risk" : weightedTruthScore < 70 ? "Verified with caution" : "Verified as likely authentic",
+      detail:
+        weightedTruthScore < 40
+          ? "The final trust decision classifies this content as likely misinformation."
+          : weightedTruthScore < 70
+            ? "The final trust decision remains mixed and should be treated cautiously."
+            : "The final trust decision leans toward authenticity with continued provenance monitoring.",
+      timestamp: new Date(now).toISOString(),
+      status: "active"
+    }
+  ];
+}
+
 export async function runAnalysis(input: AnalysisInput, history: VerificationRecord[] = []): Promise<AnalysisResult> {
-  const contentHash = hashContent(`${input.type}:${input.content}`);
+  const contentHash = hashContent([ANALYSIS_REVISION, input.type, input.url?.trim().toLowerCase() || "", input.content].join(":"));
   const language = detectLanguageSignal(input);
   const preprocessing = {
     contentHash,
@@ -105,15 +238,49 @@ export async function runAnalysis(input: AnalysisInput, history: VerificationRec
 
   const trustGraph = buildTrustGraph(input, history);
   const viralSignal = buildViralSignal(input.type, trustGraph, history);
+  const claimVerification = await analyzeClaimVerification(input, history);
+  const openSourceSignals = await collectOpenSourceSignals(input, history, claimVerification);
+  const mediaAnalysis = safely(() => buildMediaAnalysis(input.imageUrl, input.videoUrl), { image: null, video: null });
+  const aiDetection = safely(() => buildAIDetection(input.content, input.imageUrl), { text: null, image: null });
+  const sensitiveContent = safely(() => detectSensitiveContent(input.content), {
+    isSensitive: false,
+    categories: [],
+    severity: "low",
+    signals: ["Sensitive-content analysis was unavailable for this input."]
+  });
+  const unified = buildUnifiedTrustResult({
+    aiDetection,
+    mediaAnalysis,
+    sensitiveContent,
+    claimVerification,
+    content: input.content,
+    inputType: input.type
+  });
   const findings = unique(modelBreakdown.flatMap((item) => item.signals)).slice(0, 6);
   const suspiciousSignals = findings.filter((item) => /risk|synthetic|viral|absolute|impersonation|overlap|artifact|manipulation|certainty/i.test(item));
   const manipulationRiskScore = Math.round((100 - consensus.weightedTruthScore + Math.min(viralSignal.trendingScore, 80)) / 2);
   const sourceCredibilityScore = Math.max(10, Math.min(95, consensus.weightedTruthScore - suspiciousSignals.length * 3 + trustGraph.length * 4));
+  const historyScore = clamp(64 - trustGraph.length * 9 - (viralSignal.status === "viral" ? 12 : viralSignal.status === "watch" ? 6 : 0), 18, 88);
+  const similarityRiskScore = clamp(trustGraph[0]?.similarity || 24, 12, 96);
+  const openSourceScore = Math.round(openSourceSignals.reduce((sum, signal) => sum + signal.score, 0) / Math.max(openSourceSignals.length, 1));
   const explanation = modelBreakdown
     .filter((item) => item.role !== "Comparison visual generation plan")
     .slice(0, 3)
     .map((item) => `${item.provider.toUpperCase()}: ${item.summary}`)
     .join(" ");
+  const explainability = buildExplainabilityFactors({
+    truthScore: consensus.weightedTruthScore,
+    sourceCredibilityScore,
+    historyScore,
+    similarityScore: 100 - similarityRiskScore,
+    openSourceScore
+  });
+  const factTimeline = buildFactTimeline({
+    input,
+    trustGraph,
+    viralSignal,
+    weightedTruthScore: consensus.weightedTruthScore
+  });
 
   return {
     truthScore: consensus.weightedTruthScore,
@@ -142,6 +309,14 @@ export async function runAnalysis(input: AnalysisInput, history: VerificationRec
     },
     trustGraph,
     viralSignal,
-    comparisonVisuals: buildComparisonVisuals(input, findings)
+    comparisonVisuals: buildComparisonVisuals(input, findings),
+    openSourceSignals,
+    explainability,
+    factTimeline,
+    mediaAnalysis,
+    aiDetection,
+    sensitiveContent,
+    claimVerification,
+    unified
   };
 }

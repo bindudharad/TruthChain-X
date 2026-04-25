@@ -61,8 +61,8 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             <motion.div initial={{ x: -40 }} animate={{ x: 0 }} exit={{ x: -40 }} className="panel h-full w-72 rounded-r-lg p-6">
               <div className="mb-8 flex items-center justify-between">
                 <div>
-                  <p className="text-lg font-semibold">TruthChain X</p>
-                  <p className="text-sm text-slate-400">Digital trust layer</p>
+                  <p className="text-lg font-semibold">TruthChain-X</p>
+                  <p className="text-sm text-slate-400">Real-time phishing defense layer</p>
                 </div>
                 <button onClick={() => setMobileOpen(false)} className="rounded-lg border border-white/10 p-2">
                   <X className="h-4 w-4" />
@@ -92,8 +92,8 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                 <Menu className="h-5 w-5" />
               </button>
               <div>
-                <p className="text-lg font-semibold tracking-tight sm:text-xl">TruthChain X</p>
-                <p className="text-xs text-slate-400 sm:text-sm">Digital Trust Fingerprint System</p>
+                <p className="text-lg font-semibold tracking-tight sm:text-xl">TruthChain-X</p>
+                <p className="text-xs text-slate-400 sm:text-sm">Real-Time Phishing Detection System</p>
               </div>
             </div>
             <div className="flex items-center gap-3">

@@ -1,0 +1,48 @@
+
+> truthchain-x@0.1.0 dev
+> next dev --port 3011
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3011
+   - Network:      http://10.206.57.43:3011
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 3.8s
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 2.9s (297 modules)
+ GET /api/health 200 in 3226ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 13s (2754 modules)
+[TruthChain Server] Content analysis completed {
+  hash: 'b3d16cb39ae2230eed6f464834805986fd62549231d8994e87f84cfe1fc9c354',
+  creatorId: 'creator_demo',
+  truthScore: 68
+}
+ POST /api/analyze 200 in 14496ms
+ GET /dashboard 200 in 14939ms
+[TruthChain Server] Content analysis completed {
+  hash: '90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f',
+  creatorId: 'creator_demo',
+  truthScore: 72
+}
+ POST /api/analyze 200 in 104ms
+ POST /api/analyze 200 in 336ms
+ ○ Compiling /analyze ...
+ ✓ Compiled /analyze in 3.6s (2799 modules)
+ GET /analyze 200 in 4734ms
+ ○ Compiling /qr-scan ...
+ ✓ Compiled /qr-scan in 738ms (2814 modules)
+ GET /qr-scan 200 in 1177ms
+ ✓ Compiled in 373ms (1608 modules)
+ POST /api/analyze 200 in 284ms
+ POST /api/analyze 200 in 73ms
+ ✓ Compiled in 60ms
+ ○ Compiling /api/analyze ...
+ ✓ Compiled /api/analyze in 1242ms (339 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 4.1s (1891 modules)
+ POST /api/analyze 500 in 6453ms
+ POST /api/analyze 500 in 337ms
+ POST /api/analyze 500 in 322ms

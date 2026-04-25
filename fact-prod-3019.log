@@ -1,0 +1,15 @@
+
+> truthchain-x@0.1.0 start
+> next start -p 3019
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3019
+   - Network:      http://172.31.180.43:3019
+
+ ✓ Starting...
+ ✓ Ready in 1069ms
+[TruthChain Server] Content analysis completed {
+  hash: '113fd3c4487ed76d976db510c183ccae8b8c98a775676f9ed3322d8cc415cea2',
+  creatorId: 'creator_demo',
+  truthScore: 73
+}

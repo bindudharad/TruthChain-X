@@ -1,0 +1,12 @@
+[
+  {
+    "id": "5d9b392f-d8c6-421f-a454-01bb248be889",
+    "userId": "qa_user",
+    "tokenHash": "5147e4ff2f88b4422f18215a06a134149f3b4b50aca9718f9344fdc7a8cbae7d",
+    "role": "user",
+    "plan": "free",
+    "name": "QA User",
+    "expiresAt": 1777340440404,
+    "createdAt": "2026-04-21T01:40:40.404Z"
+  }
+]

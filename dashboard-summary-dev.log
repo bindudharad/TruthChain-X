@@ -1,0 +1,17 @@
+
+> truthchain-x@0.1.0 dev
+> next dev --port 3015
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3015
+   - Network:      http://10.206.57.43:3015
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 3.8s
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 7.3s (2520 modules)
+ GET /api/dashboard/summary 200 in 8974ms
+ GET /dashboard 200 in 9664ms
+ GET /api/dashboard/summary 200 in 134ms

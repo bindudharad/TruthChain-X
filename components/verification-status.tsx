@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BadgeCheck, Link2 } from "lucide-react";
+import { ClientDateText } from "@/components/ui/ClientDateText";
 
 export function VerificationStatus({
   status,
@@ -38,7 +39,7 @@ export function VerificationStatus({
             Transaction
           </div>
           <p className="mt-2 break-all font-mono text-xs">{transactionHash}</p>
-          <p className="mt-3 text-xs text-slate-500">{new Date(timestamp).toLocaleString()}</p>
+          <ClientDateText value={timestamp} fallbackLabel={timestamp.replace("T", " ").slice(0, 16)} className="mt-3 text-xs text-slate-500" />
         </div>
       </div>
     </div>

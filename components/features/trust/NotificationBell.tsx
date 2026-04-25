@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Bell } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { api } from "@/services/api";
+import { ClientDateText } from "@/components/ui/ClientDateText";
 
 type AlertItem = {
   id: string;
@@ -73,7 +74,7 @@ export function NotificationBell() {
                     <p className="text-sm font-medium text-white">{alert.title}</p>
                     <p className="mt-1 text-xs text-slate-400">{alert.detail}</p>
                     <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-slate-500">
-                      {new Date(alert.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                      <ClientDateText value={alert.createdAt} mode="time" fallbackLabel={alert.createdAt.replace("T", " ").slice(11, 16)} />
                     </p>
                   </div>
                 ))

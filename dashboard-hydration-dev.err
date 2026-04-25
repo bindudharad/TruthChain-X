@@ -1,0 +1,214 @@
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>) {
+  page: '/dashboard'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\app-paths-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\app-paths-manifest.json',
+  page: '/api/alerts'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\pages\\_document.js'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\app\dashboard\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\app\\dashboard\\page.js',
+  page: '/dashboard'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\pages\\_document.js'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\app\api\dashboard\summary\route.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\app\\api\\dashboard\\summary\\route.js',
+  page: '/api/dashboard/summary'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\pages\\_document.js'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\app-paths-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\app-paths-manifest.json',
+  page: '/api/alerts'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async C (C:\Programs\codex\TruthChain AI\.next\server\app\api\alerts\route.js:1:2503) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/api/alerts'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\app\dashboard\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\app\\dashboard\\page.js',
+  page: '/dashboard'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async C (C:\Programs\codex\TruthChain AI\.next\server\app\api\alerts\route.js:1:2503) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/api/alerts'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\app\api\dashboard\summary\route.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\app\\api\\dashboard\\summary\\route.js',
+  page: '/api/dashboard/summary'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async K (C:\Programs\codex\TruthChain AI\.next\server\app\dashboard\page.js:1:2748) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/dashboard'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async K (C:\Programs\codex\TruthChain AI\.next\server\app\dashboard\page.js:1:2748) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/dashboard'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async C (C:\Programs\codex\TruthChain AI\.next\server\app\api\dashboard\summary\route.js:1:2246) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/api/dashboard/summary'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async C (C:\Programs\codex\TruthChain AI\.next\server\app\api\dashboard\summary\route.js:1:2246) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/api/dashboard/summary'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'
+    at async (C:\Programs\codex\TruthChain AI\.next\server\pages\_error.js:1:6813) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Programs\codex\TruthChain AI\.next\cache\webpack\client-development-fallback\0.pack.gz_' -> 'C:\Programs\codex\TruthChain AI\.next\cache\webpack\client-development-fallback\0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Programs\codex\TruthChain AI\.next\cache\webpack\client-development-fallback\0.pack.gz_' -> 'C:\Programs\codex\TruthChain AI\.next\cache\webpack\client-development-fallback\0.pack.gz'
+^C^C

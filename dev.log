@@ -1,0 +1,101 @@
+
+> truthchain-x@0.1.0 dev
+> next dev --port 3010
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3010
+   - Network:      http://10.206.57.43:3010
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 5.8s
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 4.4s (297 modules)
+ GET /api/health 200 in 4840ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 17.6s (2517 modules)
+ GET /dashboard 200 in 19465ms
+ GET /dashboard 200 in 162ms
+ ○ Compiling /api/analyze ...
+ ✓ Compiled /api/analyze in 4.2s (2740 modules)
+[TruthChain Server] Content analysis completed {
+  hash: '8fd0d8e9c72aab620c32d7fae59542b9ee9e23ba15098ef250d34dac9fbb1ea3',
+  creatorId: 'creator_demo',
+  truthScore: 75
+}
+ POST /api/analyze 200 in 6322ms
+[TruthChain Server] Content analysis completed {
+  hash: '6282fabfb5f8ec4e284321196bf2170997a2c703e95d1fdb3e7205c7c0f2b81c',
+  creatorId: 'creator_demo',
+  truthScore: 75
+}
+ POST /api/analyze 200 in 105ms
+[TruthChain Server] Content analysis completed {
+  hash: '808425b9ffcde5112100a40a9d3d43cfb2c18c0d80d2a00dd7e5dd22681c7fcf',
+  creatorId: 'creator_demo',
+  truthScore: 68
+}
+ POST /api/analyze 200 in 105ms
+[TruthChain Server] Content analysis completed {
+  hash: '3807d85ca8e509955cdfe31f18fa1875b36ccf10ddc46099faa42fa388f8bdd3',
+  creatorId: 'creator_demo',
+  truthScore: 75
+}
+ POST /api/analyze 200 in 102ms
+ ✓ Compiled in 515ms (1566 modules)
+ ✓ Compiled in 1611ms (2752 modules)
+ ✓ Compiled in 968ms (1525 modules)
+ POST /api/analyze 200 in 489ms
+ POST /api/analyze 200 in 112ms
+ POST /api/analyze 200 in 101ms
+ POST /api/analyze 200 in 103ms
+ ✓ Compiled in 1167ms (1525 modules)
+[TruthChain Server] Content analysis completed {
+  hash: '46252b0de2f075ad4d5f3c442be4c1699a6ce11decbb862a4a8a9f1eafd660b5',
+  creatorId: 'creator_demo',
+  truthScore: 72
+}
+ POST /api/analyze 200 in 344ms
+[TruthChain Server] Content analysis completed {
+  hash: 'a5d7755f316b050b15b046ef9c364baccf961a677c745bb58f683baf5605c665',
+  creatorId: 'creator_demo',
+  truthScore: 72
+}
+ POST /api/analyze 200 in 165ms
+[TruthChain Server] Content analysis completed {
+  hash: '8d89b173cf67052fe809be61dfa788b6d0810c626e74c05af0bae61c73925fa3',
+  creatorId: 'creator_demo',
+  truthScore: 65
+}
+ POST /api/analyze 200 in 102ms
+[TruthChain Server] Content analysis completed {
+  hash: '28ed563688184ee09dc0ef3c2a26864dcb98ebc2f909e60665a6b76a516bd700',
+  creatorId: 'creator_demo',
+  truthScore: 72
+}
+ POST /api/analyze 200 in 106ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 1442ms (1566 modules)
+ POST /api/analyze 200 in 2354ms
+ GET /dashboard 200 in 2919ms
+ ○ Compiling /analyze ...
+ ✓ Compiled /analyze in 2.5s (2797 modules)
+ GET /analyze 200 in 3763ms
+ ○ Compiling /qr-scan ...
+ ✓ Compiled /qr-scan in 1193ms (2812 modules)
+ GET /qr-scan 200 in 1866ms
+ ✓ Compiled in 1341ms (1220 modules)
+ ✓ Compiled in 47ms
+ ✓ Compiled in 916ms (1220 modules)
+ ✓ Compiled in 771ms (1220 modules)
+ ✓ Compiled in 773ms (1220 modules)
+ ✓ Compiled in 785ms (1220 modules)
+ ✓ Compiled in 731ms (1220 modules)
+ ✓ Compiled in 1534ms (1220 modules)
+ ○ Compiling /api/analyze ...
+ ✓ Compiled /api/analyze in 578ms (339 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 4.1s (1891 modules)
+ POST /api/analyze 500 in 5777ms
+ POST /api/analyze 500 in 368ms

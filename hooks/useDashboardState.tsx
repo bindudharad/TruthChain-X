@@ -10,25 +10,36 @@ import {
   CopilotSnapshot,
   CopilotSuggestion,
   CreatorProfile,
+  GlobalIntelligenceSnapshot,
+  IntelligenceAlert,
+  IntelligenceFeedItem,
+  IntelligenceLineageStep,
+  IntelligenceNetworkEdge,
+  IntelligenceNetworkNode,
+  IntelligencePrediction,
+  IntelligenceRegion,
   TrendingAlert,
   UserTrustInsights,
-  VerificationRecord
+  VerificationRecord,
+  SimilarityMatch,
+  PhishingRiskLevel,
+  AIDetectionSummary,
+  MediaAnalysisSummary,
+  SensitiveContentSummary,
+  UnifiedTrustResult,
+  SpamCategory,
+  SpamColor,
+  SpamFeatures,
+  SimpleSpamOutput,
+  ClaimVerificationSummary,
+  DashboardAnalyzeResponse,
+  DashboardFeedItem,
+  DashboardSnapshot,
+  DashboardStorageInfo,
+  DashboardStats
 } from "@/lib/types";
 
-export type AnalyzeResponse = {
-  score: number;
-  risk: "low" | "medium" | "high";
-  credibility: "low" | "medium" | "high";
-  consensus: number;
-  matches: number;
-  confidence: number;
-  explanation: string;
-  sources: { groq: number; hf: number; gpt: number; gemma?: number };
-  txHash: string;
-  blockchainStatus: "confirmed" | "queued";
-  creator: CreatorProfile;
-  record: VerificationRecord;
-};
+export type AnalyzeResponse = DashboardAnalyzeResponse;
 
 type HistoryResponse = {
   records: VerificationRecord[];
@@ -36,7 +47,7 @@ type HistoryResponse = {
 };
 
 type TrustFeedResponse = {
-  feed: Array<{ id: string; label: string; score: number; timestamp: string; status: string; channel: string }>;
+  feed: DashboardFeedItem[];
 };
 
 type CopilotInsightsResponse = {
@@ -57,98 +68,170 @@ type CopilotUserInsightsResponse = {
   userInsights: UserTrustInsights;
 };
 
-type DashboardContextValue = {
-  demoMode: boolean;
-  setDemoMode: (value: boolean) => void;
+type IntelligenceGlobalResponse = {
+  riskIndex: GlobalIntelligenceSnapshot["riskIndex"];
+  regions: IntelligenceRegion[];
+};
+
+type IntelligenceNetworkResponse = {
+  nodes: IntelligenceNetworkNode[];
+  edges: IntelligenceNetworkEdge[];
+};
+
+type IntelligenceLineageResponse = {
+  lineage: IntelligenceLineageStep[];
+  crossPlatform: GlobalIntelligenceSnapshot["crossPlatform"];
+};
+
+type IntelligenceFeedResponse = {
+  feed: IntelligenceFeedItem[];
+  alerts: IntelligenceAlert[];
+};
+
+type IntelligencePredictionResponse = {
+  prediction: IntelligencePrediction;
+};
+
+export type DashboardContextValue = {
   enterpriseMode: boolean;
   setEnterpriseMode: (value: boolean) => void;
   loading: boolean;
   error: string;
-  result: AnalyzeResponse;
+  result: AnalyzeResponse | null;
   records: VerificationRecord[];
   alerts: TrendingAlert[];
   feed: TrustFeedResponse["feed"];
+  generatedAt: string;
+  storage: DashboardStorageInfo;
+  stats: DashboardStats;
   community: CommunityValidation;
   copilot: CopilotSnapshot;
-  verifyContent: (payload: { contentType: "text" | "image"; content: string; fileName: string; demoMode: boolean; creatorId: string; creatorName: string }) => Promise<void>;
+  intelligence: GlobalIntelligenceSnapshot;
+  verifyContent: (payload: {
+    contentType: "text" | "image" | "video";
+    content: string;
+    url?: string;
+    imageUrl?: string;
+    videoUrl?: string;
+    fileName: string;
+    creatorId: string;
+    creatorName: string;
+  }) => Promise<void>;
   refresh: () => Promise<void>;
   refreshCopilot: (hash?: string) => Promise<void>;
+  refreshIntelligence: (hash?: string) => Promise<void>;
 };
 
 const DashboardContext = createContext<DashboardContextValue | null>(null);
-
-function buildStarterCopilot(starter: AnalyzeResponse): CopilotSnapshot {
+function buildEmptyCopilot(): CopilotSnapshot {
   return {
-    insights: [
-      {
-        id: "starter-insight",
-        title: "Copilot is monitoring the current claim",
-        detail: starter.record.executiveSummary,
-        severity: starter.score < 40 ? "high" : starter.score < 70 ? "medium" : "low",
-        kind: "insight"
-      }
-    ],
-    suggestions: [
-      {
-        id: "starter-suggestion",
-        message: starter.score < 40 ? "Avoid sharing this content until provenance is verified." : "Continue monitoring and request source context if needed.",
-        severity: starter.score < 40 ? "high" : "medium",
-        recommendation: "Use the trust fingerprint and explanation panel to brief reviewers."
-      }
-    ],
-    alerts: [
-      {
-        id: "starter-alert",
-        title: "Copilot activated",
-        detail: "Autonomous trust monitoring is now watching the active result.",
-        severity: "low",
-        autoDismissMs: 7000
-      }
-    ],
-    messages: [
-      {
-        id: "starter-message",
-        role: "assistant",
-        content: "Trust Copilot AI is online and ready to surface proactive guidance."
-      }
-    ],
+    insights: [],
+    suggestions: [],
+    alerts: [],
+    messages: [],
     userInsights: {
-      trustScore: starter.score,
-      exposureLevel: Math.max(18, Math.min(92, starter.record.viralSignal.trendingScore)),
-      riskLevel: starter.score < 40 ? "high" : starter.score < 70 ? "medium" : "low",
-      behaviorSummary: starter.creator.historySummary
+      trustScore: 0,
+      exposureLevel: 0,
+      riskLevel: "low",
+      behaviorSummary: "No verified activity is loaded yet."
     },
     learning: {
-      progress: 64,
-      status: "AI learning model is warming up on recent trust activity.",
-      updatedAt: new Date().toISOString()
+      progress: 0,
+      status: "Feature not connected to backend yet.",
+      updatedAt: ""
     }
+  };
+}
+
+function buildEmptyIntelligence(): GlobalIntelligenceSnapshot {
+  return {
+    riskIndex: {
+      globalRiskScore: 0,
+      topRiskRegions: [],
+      trendingFakeTopics: [],
+      highRiskCreators: [],
+      riskTrend: [],
+      distribution: []
+    },
+    regions: [],
+    network: {
+      nodes: [],
+      edges: []
+    },
+    lineage: [],
+    feed: [],
+    alerts: [],
+    prediction: {
+      label: "No prediction available until a verification record exists.",
+      score: 0,
+      confidence: 0,
+      rationale: "Feature not connected to backend."
+    },
+    crossPlatform: []
+  };
+}
+
+function buildStarterStorage(): DashboardStorageInfo {
+  return {
+    mode: "local-json",
+    hasMongoUri: false,
+    usingMongo: false
   };
 }
 
 export function DashboardStateProvider({
   children,
-  starter
+  initialSnapshot
 }: {
   children: ReactNode;
-  starter: AnalyzeResponse;
+  initialSnapshot?: DashboardSnapshot | null;
 }) {
-  const [demoMode, setDemoMode] = useState(true);
   const [enterpriseMode, setEnterpriseMode] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [result, setResult] = useState<AnalyzeResponse>(starter);
-  const [records, setRecords] = useState<VerificationRecord[]>([starter.record]);
-  const [alerts, setAlerts] = useState<TrendingAlert[]>([]);
-  const [feed, setFeed] = useState<TrustFeedResponse["feed"]>([]);
-  const [community, setCommunity] = useState<CommunityValidation>({ upvotes: 2, downvotes: 5, consensusLabel: "Community flags suspicious" });
-  const [copilot, setCopilot] = useState<CopilotSnapshot>(() => buildStarterCopilot(starter));
+  const [result, setResult] = useState<AnalyzeResponse | null>(initialSnapshot?.result ?? null);
+  const [records, setRecords] = useState<VerificationRecord[]>(initialSnapshot?.records ?? []);
+  const [alerts, setAlerts] = useState<TrendingAlert[]>(initialSnapshot?.alerts ?? []);
+  const [feed, setFeed] = useState<TrustFeedResponse["feed"]>(initialSnapshot?.feed ?? []);
+  const [generatedAt, setGeneratedAt] = useState(initialSnapshot?.generatedAt ?? "");
+  const [storage, setStorage] = useState<DashboardStorageInfo>(initialSnapshot?.storage ?? buildStarterStorage());
+  const [stats, setStats] = useState<DashboardStats>(
+    initialSnapshot?.stats ?? {
+      totalAlerts: 0,
+      recentScans: 0,
+      averageScore: 0,
+      lastVerdict: "No data",
+      verificationStats: { verified: 0, unverified: 0, misleading: 0, liveChecked: 0 }
+    }
+  );
+  const [community, setCommunity] = useState<CommunityValidation>(initialSnapshot?.community ?? { upvotes: 0, downvotes: 0, consensusLabel: "No community signal yet" });
+  const [copilot, setCopilot] = useState<CopilotSnapshot>(initialSnapshot?.copilot ?? buildEmptyCopilot());
+  const [intelligence, setIntelligence] = useState<GlobalIntelligenceSnapshot>(initialSnapshot?.intelligence ?? buildEmptyIntelligence());
+
+  const applySnapshot = useCallback((snapshot: DashboardSnapshot) => {
+    setResult(snapshot.result);
+    setRecords(snapshot.records || []);
+    setAlerts(snapshot.alerts || []);
+    setFeed(snapshot.feed || []);
+    setGeneratedAt(snapshot.generatedAt || new Date().toISOString());
+    setStorage(snapshot.storage || buildStarterStorage());
+    setStats(snapshot.stats);
+    setCommunity(snapshot.community || { upvotes: 0, downvotes: 0, consensusLabel: "No community signal yet" });
+    setCopilot(snapshot.copilot || buildEmptyCopilot());
+    setIntelligence(snapshot.intelligence || buildEmptyIntelligence());
+  }, []);
+
+  const refreshSnapshot = useCallback(async (hash?: string) => {
+    const snapshot = await api.get<DashboardSnapshot>("/api/dashboard/summary", { params: { hash } });
+    applySnapshot(snapshot);
+    return snapshot;
+  }, [applySnapshot]);
 
   const fetchHistory = useCallback(async () => {
     const data = await api.get<HistoryResponse>("/api/history");
-    setRecords(data.records?.length ? data.records : [starter.record]);
+    setRecords(data.records || []);
     setAlerts(data.trendingAlerts || []);
-  }, [starter.record]);
+  }, []);
 
   const fetchTrustFeed = useCallback(async () => {
     const data = await api.get<TrustFeedResponse>("/api/trust-feed");
@@ -161,10 +244,14 @@ export function DashboardStateProvider({
   }, []);
 
   const refreshCopilot = useCallback(async (hash?: string) => {
-    const targetHash = hash || result.record.hash;
+    const targetHash = hash || result?.record.hash;
+    if (!targetHash) {
+      setCopilot(buildEmptyCopilot());
+      return;
+    }
     const [insightsData, suggestionsData, alertsData, userInsightsData] = await Promise.all([
-      api.post<CopilotInsightsResponse>("/api/copilot/insights", { hash: targetHash, demoMode }),
-      api.post<CopilotSuggestionsResponse>("/api/copilot/suggestions", { hash: targetHash, demoMode }),
+      api.post<CopilotInsightsResponse>("/api/copilot/insights", { hash: targetHash, demoMode: false }),
+      api.post<CopilotSuggestionsResponse>("/api/copilot/suggestions", { hash: targetHash, demoMode: false }),
       api.get<CopilotAlertsResponse>("/api/copilot/alerts", { params: { hash: targetHash } }),
       api.get<CopilotUserInsightsResponse>("/api/copilot/user-insights", { params: { hash: targetHash } })
     ]);
@@ -177,39 +264,92 @@ export function DashboardStateProvider({
       alerts: alertsData.alerts,
       userInsights: userInsightsData.userInsights
     });
-  }, [demoMode, result.record.hash]);
+  }, [result?.record.hash]);
+
+  const refreshIntelligence = useCallback(async (hash?: string) => {
+    const targetHash = hash || result?.record.hash;
+    if (!targetHash) {
+      setIntelligence(buildEmptyIntelligence());
+      return;
+    }
+    const [globalData, networkData, lineageData, feedData, predictionData] = await Promise.all([
+      api.get<IntelligenceGlobalResponse>("/api/intelligence/global", { params: { hash: targetHash } }),
+      api.get<IntelligenceNetworkResponse>("/api/intelligence/network", { params: { hash: targetHash } }),
+      api.get<IntelligenceLineageResponse>("/api/intelligence/lineage", { params: { hash: targetHash } }),
+      api.get<IntelligenceFeedResponse>("/api/intelligence/feed", { params: { hash: targetHash } }),
+      api.get<IntelligencePredictionResponse>("/api/intelligence/prediction", { params: { hash: targetHash } })
+    ]);
+
+    setIntelligence({
+      riskIndex: globalData.riskIndex,
+      regions: globalData.regions,
+      network: {
+        nodes: networkData.nodes,
+        edges: networkData.edges
+      },
+      lineage: lineageData.lineage,
+      crossPlatform: lineageData.crossPlatform,
+      feed: feedData.feed,
+      alerts: feedData.alerts,
+      prediction: predictionData.prediction
+    });
+  }, [result?.record.hash]);
 
   const refresh = useCallback(async () => {
-    await Promise.all([fetchHistory(), fetchTrustFeed(), fetchCommunity(result.record.hash), refreshCopilot(result.record.hash)]);
-  }, [fetchCommunity, fetchHistory, fetchTrustFeed, refreshCopilot, result.record.hash]);
+    await refreshSnapshot(result?.record.hash);
+  }, [refreshSnapshot, result?.record.hash]);
 
-  const verifyContent = useCallback(async (payload: { contentType: "text" | "image"; content: string; fileName: string; demoMode: boolean; creatorId: string; creatorName: string }) => {
+  const verifyContent = useCallback(async (payload: {
+    contentType: "text" | "image" | "video";
+    content: string;
+    url?: string;
+    imageUrl?: string;
+    videoUrl?: string;
+    fileName: string;
+    creatorId: string;
+    creatorName: string;
+  }) => {
     setLoading(true);
     setError("");
     try {
-      const data = await api.post<AnalyzeResponse>("/api/analyze", payload);
+      const requestPayload = {
+        ...payload,
+        input: payload.content
+      };
+      const data = await api.post<AnalyzeResponse>("/api/analyze", requestPayload, {
+        cache: "no-store"
+      });
+      console.log("LIVE RESULT:", data);
+      if (!("record" in data) || !data.record?.hash) {
+        throw new Error("Analyze API returned an incomplete response.");
+      }
+
       setResult(data);
       setRecords((current) => [data.record, ...current.filter((item) => item.id !== data.record.id)].slice(0, 12));
-      await Promise.all([fetchHistory(), fetchTrustFeed(), fetchCommunity(data.record.hash), refreshCopilot(data.record.hash)]);
+      await refreshSnapshot(data.record.hash);
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Live analysis failed.");
     } finally {
       setLoading(false);
     }
-  }, [fetchCommunity, fetchHistory, fetchTrustFeed, refreshCopilot]);
+  }, [refreshSnapshot]);
 
   useEffect(() => {
+    if (!result) return;
+    console.log("UPDATED RESULT:", result);
+  }, [result]);
+
+  useEffect(() => {
+    if (!result?.record.hash) return;
     const timer = window.setInterval(() => {
-      refreshCopilot(result.record.hash).catch(() => undefined);
-    }, 18000);
+      refreshSnapshot(result.record.hash).catch(() => undefined);
+    }, 5000);
 
     return () => window.clearInterval(timer);
-  }, [refreshCopilot, result.record.hash]);
+  }, [refreshSnapshot, result?.record.hash]);
 
   const value = useMemo(
     () => ({
-      demoMode,
-      setDemoMode,
       enterpriseMode,
       setEnterpriseMode,
       loading,
@@ -218,13 +358,18 @@ export function DashboardStateProvider({
       records,
       alerts,
       feed,
+      generatedAt,
+      storage,
+      stats,
       community,
       copilot,
+      intelligence,
       verifyContent,
       refresh,
-      refreshCopilot
+      refreshCopilot,
+      refreshIntelligence
     }),
-    [alerts, community, copilot, demoMode, enterpriseMode, error, feed, loading, records, refresh, refreshCopilot, result, verifyContent]
+    [alerts, community, copilot, enterpriseMode, error, feed, generatedAt, intelligence, loading, records, refresh, refreshCopilot, refreshIntelligence, result, stats, storage, verifyContent]
   );
 
   return <DashboardContext.Provider value={value}>{children}</DashboardContext.Provider>;

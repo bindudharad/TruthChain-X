@@ -1,4 +1,4 @@
-# TruthChain X Deployment Guide
+# TruthChain-X Deployment Guide
 
 ## Recommended deployment patterns
 

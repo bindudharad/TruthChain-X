@@ -2,8 +2,8 @@ import { AppShell } from "@/components/layout/AppShell";
 import { createDemoPrincipal, listApiKeys, listUsageSnapshots } from "@/lib/platform";
 
 const endpointCatalog = [
-  { method: "POST", path: "/api/verify-content", plan: "Free", description: "Verify one content item and return the full trust fingerprint." },
-  { method: "GET", path: "/api/trust-score/{id}", plan: "Free", description: "Fetch a previously stored trust score by content hash." },
+  { method: "POST", path: "/api/verify-content", plan: "Free", description: "Verify one content item and return the full phishing risk signature." },
+  { method: "GET", path: "/api/trust-score/{id}", plan: "Free", description: "Fetch a previously stored phishing risk score by content hash." },
   { method: "GET", path: "/api/creator-reputation/{id}", plan: "Free", description: "Retrieve creator credibility and identity history." },
   { method: "POST", path: "/api/bulk-verify", plan: "Pro", description: "Submit up to 10 items for batch trust analysis." },
   { method: "GET", path: "/api/analytics/report", plan: "Enterprise", description: "Pull a platform-wide report for trends, creators, and hotspots." }

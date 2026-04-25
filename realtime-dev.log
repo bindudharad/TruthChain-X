@@ -1,0 +1,70 @@
+
+> truthchain-x@0.1.0 dev
+> next dev --port 3016
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3016
+   - Network:      http://172.31.180.43:3016
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 4.9s
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 5.9s (2500 modules)
+ GET /dashboard 200 in 8350ms
+ ○ Compiling /api/dashboard ...
+ ✓ Compiled /api/dashboard in 3.1s (2749 modules)
+[TruthChain Server] Content analysis completed {
+  hash: '63ec3c852a47b6b5227aeb549c0ab93328278c48432aff2f2887c652364710e2',
+  creatorId: 'tester',
+  truthScore: 72
+}
+[TruthChain Server] Content analysis completed {
+  hash: '57eb0a113f2619cb09140b8937c0acd72d29db04267b7f92e488486673597832',
+  creatorId: 'tester',
+  truthScore: 74
+}
+ POST /api/analyze 200 in 3765ms
+ POST /api/analyze 200 in 3436ms
+ POST /api/analyze 200 in 3776ms
+ GET /api/dashboard 200 in 3605ms
+ POST /api/analyze 200 in 74ms
+ ✓ Compiled in 4.1s (2763 modules)
+[TruthChain Server] Content analysis completed {
+  hash: '5456ffc3e32635312bbeaa3687a243fbbf42c0e0a4ff7d2e472627da80bce27d',
+  creatorId: 'tester',
+  truthScore: 72
+}
+ POST /api/analyze 200 in 316ms
+ ○ Compiling /api/dashboard/summary ...
+ ✓ Compiled /api/dashboard/summary in 1572ms (2751 modules)
+ GET /api/dashboard/summary 200 in 1864ms
+[TruthChain Server] Content analysis completed {
+  hash: '718691081dac727d9cc0763c63b1bbefd066010f88f52a26842a542550b8ec12',
+  creatorId: 'tester',
+  truthScore: 75
+}
+ POST /api/analyze 200 in 2060ms
+ ✓ Compiled in 1208ms (1187 modules)
+ ✓ Compiled in 692ms (1187 modules)
+ ✓ Compiled in 621ms (1187 modules)
+ ✓ Compiled in 585ms (1187 modules)
+ ✓ Compiled in 696ms (1187 modules)
+ ✓ Compiled in 826ms (1187 modules)
+ ✓ Compiled in 782ms (1187 modules)
+ ✓ Compiled in 568ms (1187 modules)
+ ✓ Compiled in 775ms (1187 modules)
+ ✓ Compiled in 599ms (1187 modules)
+ ✓ Compiled in 645ms (1187 modules)
+ ✓ Compiled in 811ms (1187 modules)
+ ✓ Compiled in 525ms (1173 modules)
+ ✓ Compiled in 712ms (1187 modules)
+ ○ Compiling /api/analyze ...
+ ✓ Compiled /api/analyze in 1128ms (342 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1460ms (1875 modules)
+ POST /api/analyze 500 in 3877ms
+ POST /api/analyze 500 in 3866ms
+ POST /api/analyze 500 in 3861ms
+ POST /api/analyze 500 in 3944ms

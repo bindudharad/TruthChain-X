@@ -1,0 +1,34 @@
+[
+  {
+    "label": "Typosquatting login URL",
+    "input": {
+      "url": "http://amaz0n-login-security.xyz",
+      "content": "Your account is blocked. Verify now and login to continue."
+    },
+    "expected": {
+      "riskLevel": "dangerous",
+      "attackType": "credential-trap"
+    }
+  },
+  {
+    "label": "Urgent phishing message",
+    "input": {
+      "content": "Your account is blocked, login now. Enter password to continue."
+    },
+    "expected": {
+      "riskLevel": "dangerous",
+      "attackType": "credential-trap"
+    }
+  },
+  {
+    "label": "Safe site baseline",
+    "input": {
+      "url": "https://www.google.com",
+      "content": "Search the world's information, including webpages, images, videos and more."
+    },
+    "expected": {
+      "riskLevel": "safe"
+    }
+  }
+]
+

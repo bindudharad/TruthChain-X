@@ -1,0 +1,44 @@
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/api/analyze'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\server\next-font-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\server\\next-font-manifest.json'
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json',
+  page: '/api/analyze'
+}
+ ⨯ Error: Cannot find module '../webpack-runtime.js'
+Require stack:
+- C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\require.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\load-components.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\utils.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\options.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\swc\index.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\parse-module.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\build\analysis\get-page-static-info.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\router-server.js
+- C:\Programs\codex\TruthChain AI\node_modules\next\dist\server\lib\start-server.js
+    at <unknown> (C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js:60:27)
+    at Object.<anonymous> (C:\Programs\codex\TruthChain AI\.next\server\pages\_document.js:66:3) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+[Error: ENOENT: no such file or directory, open 'C:\Programs\codex\TruthChain AI\.next\routes-manifest.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Programs\\codex\\TruthChain AI\\.next\\routes-manifest.json'
+}

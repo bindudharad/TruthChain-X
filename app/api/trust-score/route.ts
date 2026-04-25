@@ -23,7 +23,7 @@ export async function GET(request: Request) {
       {
         hash: resolvedHash,
         found: false,
-        message: "No trust fingerprint found for this content yet."
+        message: "No phishing risk signature found for this content yet."
       },
       { status: 404 }
     );

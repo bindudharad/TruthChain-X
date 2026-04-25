@@ -16,6 +16,7 @@ import { GlobalHeatmap } from "@/components/dashboard/GlobalHeatmap";
 import { MisinformationNetworkGraph } from "@/components/dashboard/MisinformationNetworkGraph";
 import { ContentLineageTracker } from "@/components/dashboard/ContentLineageTracker";
 import { RealtimeTrustFeed } from "@/components/dashboard/RealtimeTrustFeed";
+import { ClientDateText } from "@/components/ui/ClientDateText";
 
 const LineChartComponent = dynamic(() => import("@/components/charts/LineChartComponent").then((mod) => mod.LineChartComponent), { ssr: false });
 const BarChartComponent = dynamic(() => import("@/components/charts/BarChartComponent").then((mod) => mod.BarChartComponent), { ssr: false });
@@ -65,9 +66,7 @@ function CrossPlatformTracker({ hops }: { hops: CrossPlatformHop[] }) {
             {index < hops.length - 1 ? <div className="absolute left-full top-1/2 hidden h-px w-6 -translate-y-1/2 bg-gradient-to-r from-cyan-400/50 to-transparent sm:block" /> : null}
             <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{hop.platform}</p>
             <p className="mt-3 text-lg font-semibold capitalize text-white">{hop.status}</p>
-            <p className="mt-2 text-xs text-slate-400">
-              {new Date(hop.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-            </p>
+            <ClientDateText value={hop.timestamp} mode="time" fallbackLabel={hop.timestamp.slice(11, 16)} className="mt-2 text-xs text-slate-400" />
           </div>
         ))}
       </div>

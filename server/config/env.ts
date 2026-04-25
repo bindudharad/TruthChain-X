@@ -1,8 +1,8 @@
 export const env = {
   mongoUri: process.env.MONGODB_URI || "",
-  chainRpcUrl: process.env.CHAIN_RPC_URL || "",
+  chainRpcUrl: process.env.CHAIN_RPC_URL || process.env.NEXT_PUBLIC_RPC_URL || "",
   chainPrivateKey: process.env.CHAIN_PRIVATE_KEY || "",
-  chainContractAddress: process.env.CHAIN_CONTRACT_ADDRESS || "",
+  chainContractAddress: process.env.CHAIN_CONTRACT_ADDRESS || process.env.NEXT_PUBLIC_BLOCKCHAIN_CONTRACT || "",
   groqApiKey: process.env.GROQ_API_KEY || "",
   gemmaApiKey: process.env.GEMMA_API_KEY || "",
   huggingFaceApiKey: process.env.HUGGINGFACE_API_KEY || "",

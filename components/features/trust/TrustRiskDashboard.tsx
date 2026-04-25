@@ -14,7 +14,24 @@ function TrustRiskDashboardBase({ records }: { records: VerificationRecord[] }) 
   const [remote, setRemote] = useState<RemoteRiskData | null>(null);
 
   useEffect(() => {
-    api.get<RemoteRiskData>("/api/risk-dashboard").then(setRemote).catch(() => undefined);
+    let cancelled = false;
+
+    const load = () => {
+      api
+        .get<RemoteRiskData>("/api/risk-dashboard")
+        .then((data) => {
+          if (!cancelled) setRemote(data);
+        })
+        .catch(() => undefined);
+    };
+
+    load();
+    const timer = window.setInterval(load, 15000);
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
   }, []);
 
   const stats = useMemo(

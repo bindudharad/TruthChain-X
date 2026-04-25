@@ -8,7 +8,7 @@ export async function handleTrustLookup(request: Request, hash: string) {
 
   const record = await findVerificationByHash(hash);
   if (!record) {
-    return NextResponse.json({ hash, found: false, message: "Trust fingerprint not found." }, { status: 404 });
+    return NextResponse.json({ hash, found: false, message: "Phishing risk signature not found." }, { status: 404 });
   }
 
   return NextResponse.json({

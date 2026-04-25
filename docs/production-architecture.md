@@ -1,4 +1,4 @@
-# TruthChain X Production Architecture
+# TruthChain-X Production Architecture
 
 ## Service map
 
@@ -46,7 +46,7 @@ The current Next.js monorepo already maps cleanly to a production service split:
 ## Scaling plan
 
 - Move long-running AI jobs off request threads
-- Cache trust fingerprints by content hash
+- Cache phishing risk signatures by content hash
 - Add vector storage for embeddings similarity
 - Replace file-backed usage tracking with Redis or Postgres
 - Add observability with OpenTelemetry and structured logs

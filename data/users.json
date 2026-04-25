@@ -1,0 +1,30 @@
+[
+  {
+    "userId": "qa_user",
+    "email": "qa-user@example.com",
+    "displayName": "QA User",
+    "role": "user",
+    "plan": "free",
+    "trustScore": 62,
+    "riskLevel": "medium",
+    "reportsCount": 0,
+    "contentHistory": [],
+    "verificationStatus": "pending",
+    "badges": [],
+    "reportsAccuracy": 50,
+    "permissions": [
+      "view:dashboard",
+      "view:passport",
+      "create:report",
+      "create:upload",
+      "create:similarity-search"
+    ],
+    "uploadRestricted": false,
+    "blockchainIdentityHash": "5b177ea94d470f0427f8ed9a5183c964c6aa2217d57e83e46b4175e56d2d3819",
+    "createdAt": "2026-04-21T01:40:40.399Z",
+    "lastLoginAt": "2026-04-21T01:40:40.399Z",
+    "behaviorFlags": [],
+    "passwordHash": "$2b$10$aDGNWU.1ZoDyWIVxcbPf/umeCy6GVE9einQB5HfhXc55odSMX.tU6",
+    "passwordSalt": "94a92d82fa55fdf2cdb7a810abdfb248"
+  }
+]

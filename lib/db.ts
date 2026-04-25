@@ -1,8 +1,9 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import mongoose, { Schema, model, models } from "mongoose";
+import { connectDB } from "@/lib/mongodb";
 import { normalizeCreatorId } from "@/lib/reputation";
-import { CreatorProfile, TrendingAlert, VerificationRecord } from "@/lib/types";
+import { CreatorProfile, DashboardStorageInfo, TrendingAlert, VerificationRecord } from "@/lib/types";
 
 const dataDir = join(process.cwd(), "data");
 const dataFile = join(dataDir, "verifications.json");
@@ -17,6 +18,7 @@ const VerificationSchema = new Schema<RecordDocument>(
     hash: { type: String, required: true, index: true },
     type: { type: String, required: true },
     fileName: { type: String, required: true },
+    url: { type: String },
     creatorId: { type: String, required: true, index: true },
     creatorProfile: { type: Schema.Types.Mixed, required: true },
     embedding: [{ type: Number }],
@@ -34,6 +36,14 @@ const VerificationSchema = new Schema<RecordDocument>(
     trustGraph: [{ type: Schema.Types.Mixed }],
     viralSignal: { type: Schema.Types.Mixed, required: true },
     comparisonVisuals: [{ type: Schema.Types.Mixed }],
+    openSourceSignals: [{ type: Schema.Types.Mixed }],
+    explainability: [{ type: Schema.Types.Mixed }],
+    factTimeline: [{ type: Schema.Types.Mixed }],
+    mediaAnalysis: { type: Schema.Types.Mixed },
+    aiDetection: { type: Schema.Types.Mixed },
+    sensitiveContent: { type: Schema.Types.Mixed },
+    claimVerification: { type: Schema.Types.Mixed },
+    unified: { type: Schema.Types.Mixed },
     timestamp: { type: String, required: true },
     firstVerifiedAt: { type: String, required: true },
     lastVerifiedAt: { type: String, required: true },
@@ -70,8 +80,23 @@ async function connectMongo() {
   const uri = process.env.MONGODB_URI;
   if (!uri) return false;
   if (mongoose.connection.readyState === 1) return true;
-  await mongoose.connect(uri);
-  return true;
+  try {
+    await connectDB();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function getPersistenceStatus(): Promise<DashboardStorageInfo> {
+  const hasMongoUri = !!process.env.MONGODB_URI;
+  const usingMongo = await connectMongo().catch(() => false);
+
+  return {
+    mode: usingMongo ? "mongo" : "local-json",
+    hasMongoUri,
+    usingMongo
+  };
 }
 
 function ensureDataFile() {
@@ -82,7 +107,7 @@ function ensureDataFile() {
 
 function readLocalRecords(): VerificationRecord[] {
   ensureDataFile();
-  return JSON.parse(readFileSync(dataFile, "utf8")) as VerificationRecord[];
+  return (JSON.parse(readFileSync(dataFile, "utf8")) as RecordDocument[]).map(normalizeRecord);
 }
 
 function writeLocalRecords(records: VerificationRecord[]) {
@@ -269,6 +294,7 @@ function normalizeRecord(record: RecordDocument): VerificationRecord {
     hash: record.hash,
     type: record.type,
     fileName: record.fileName,
+    url: record.url,
     creatorId: record.creatorId,
     creatorProfile: record.creatorProfile,
     embedding: record.embedding,
@@ -285,7 +311,49 @@ function normalizeRecord(record: RecordDocument): VerificationRecord {
     trustFingerprint: record.trustFingerprint,
     trustGraph: record.trustGraph,
     viralSignal: record.viralSignal,
-    comparisonVisuals: record.comparisonVisuals,
+    comparisonVisuals: record.comparisonVisuals || [],
+    openSourceSignals: record.openSourceSignals || [],
+    explainability: record.explainability || [],
+    factTimeline: record.factTimeline || [],
+    mediaAnalysis: record.mediaAnalysis || { image: null, video: null },
+    aiDetection: record.aiDetection || { text: null, image: null },
+    sensitiveContent: record.sensitiveContent || { isSensitive: false, categories: [], severity: "low", signals: [] },
+    claimVerification: record.claimVerification || {
+      claims: [],
+      claimStatus: "NotApplicable",
+      claimDetected: false,
+      verificationRequired: false,
+      categories: [],
+      suspiciousClaimPatterns: [],
+      trustedContextDetected: false,
+      credibleSourcePresent: false,
+      noTrustedSource: false,
+      verified: false,
+      sourcesFound: 0,
+      trustedSourcesCount: 0,
+      verificationScore: 0,
+      verdict: "not_applicable",
+      confidence: 70,
+      checkedLive: false,
+      query: "",
+      trustedSources: [],
+      factCheckHits: [],
+      tags: [],
+      reason: "No claim verification available",
+      summary: "Claim verification has not been run for this record.",
+      explanation: ["Claim verification has not been run for this record."]
+    },
+    unified: record.unified || {
+      score: record.truthScore < 40 ? 78 : record.truthScore < 70 ? 48 : 18,
+      category: record.truthScore < 40 ? "SPAM" : record.truthScore < 70 ? "SUSPICIOUS" : "SAFE",
+      color: record.truthScore < 40 ? "red" : record.truthScore < 70 ? "yellow" : "green",
+      reason: record.truthScore < 40 ? "Contains suspicious trust and safety signals." : "No suspicious patterns detected.",
+      safeScore: record.truthScore < 40 ? 22 : record.truthScore < 70 ? 52 : 82,
+      unsafeScore: record.truthScore < 40 ? 78 : record.truthScore < 70 ? 48 : 18,
+      safeReasons: [],
+      unsafeReasons: record.suspiciousSignals || [],
+      features: []
+    },
     timestamp: record.timestamp,
     firstVerifiedAt: record.firstVerifiedAt,
     lastVerifiedAt: record.lastVerifiedAt,

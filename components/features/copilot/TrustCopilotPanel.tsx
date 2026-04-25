@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BellRing, BrainCircuit, ChevronRight, Radar, ShieldAlert, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { ClientDateText } from "@/components/ui/ClientDateText";
+import { CountUp } from "@/components/ui/CountUp";
 import { CopilotSnapshot } from "@/lib/types";
 import { listItem } from "@/animations/presets";
 
@@ -16,10 +18,10 @@ function toneForSeverity(value: "low" | "medium" | "high") {
 
 function TrustCopilotPanelBase({
   copilot,
-  updatedAtLabel
+  updatedAt
 }: {
   copilot: CopilotSnapshot;
-  updatedAtLabel: string;
+  updatedAt: string;
 }) {
   const [expanded, setExpanded] = useState(true);
   const [visibleAlerts, setVisibleAlerts] = useState(copilot.alerts);
@@ -79,11 +81,16 @@ function TrustCopilotPanelBase({
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
             A live trust copilot that watches content, explains risk, suggests actions, and adapts its guidance as the platform learns.
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Badge tone="info">Secure Copilot Channel</Badge>
+            <Badge tone="success">Verified Guidance</Badge>
+            <Badge tone="info">AI Confidence High</Badge>
+          </div>
         </div>
         <div className="flex items-center gap-3">
           <div className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-right">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Updated</p>
-            <p className="mt-1 text-sm text-slate-200">{updatedAtLabel}</p>
+            <ClientDateText value={updatedAt} mode="time" fallbackLabel={updatedAt.slice(11, 16)} className="mt-1 text-sm text-slate-200" />
           </div>
           <button
             type="button"
@@ -101,12 +108,16 @@ function TrustCopilotPanelBase({
       <div className="mt-6 grid gap-4 lg:grid-cols-4">
         <div className="rounded-xl border border-white/10 bg-gradient-to-br from-cyan-400/14 to-blue-500/8 p-4">
           <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Trust score</p>
-          <p className="mt-3 text-3xl font-semibold text-white">{copilot.userInsights.trustScore}%</p>
+          <p className="mt-3 text-3xl font-semibold text-white">
+            <CountUp value={copilot.userInsights.trustScore} suffix="%" />
+          </p>
           <p className="mt-2 text-sm text-slate-300">Current trust health for the active content.</p>
         </div>
         <div className="rounded-xl border border-white/10 bg-gradient-to-br from-violet-400/14 to-fuchsia-500/8 p-4">
           <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Exposure level</p>
-          <p className="mt-3 text-3xl font-semibold text-white">{copilot.userInsights.exposureLevel}%</p>
+          <p className="mt-3 text-3xl font-semibold text-white">
+            <CountUp value={copilot.userInsights.exposureLevel} suffix="%" />
+          </p>
           <p className="mt-2 text-sm text-slate-300">How much risky trust activity surrounds this stream.</p>
         </div>
         <div className="rounded-xl border border-white/10 bg-gradient-to-br from-amber-300/14 to-orange-500/8 p-4">
@@ -117,9 +128,11 @@ function TrustCopilotPanelBase({
         <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
           <div className="flex items-center justify-between">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Continuous learning</p>
-            <Badge tone="info">Active</Badge>
+            <Badge tone="info" className="status-pulse">Active</Badge>
           </div>
-          <p className="mt-3 text-3xl font-semibold text-white">{copilot.learning.progress}%</p>
+          <p className="mt-3 text-3xl font-semibold text-white">
+            <CountUp value={copilot.learning.progress} suffix="%" />
+          </p>
           <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/8">
             <motion.div
               animate={{ width: `${copilot.learning.progress}%` }}
@@ -242,7 +255,8 @@ function TrustCopilotPanelBase({
                         transition={{ delay: index * 0.08 }}
                         className={`rounded-xl px-4 py-4 text-sm leading-6 ${message.role === "assistant" ? "bg-cyan-400/10 text-slate-100" : "bg-white/5 text-slate-300"}`}
                       >
-                        {message.content}
+                        <span className="block text-[11px] uppercase tracking-[0.18em] text-cyan-200/70">{message.role === "assistant" ? "Copilot" : "System"}</span>
+                        <span className="mt-2 block">{message.content}</span>
                       </motion.div>
                     ))}
                   </div>

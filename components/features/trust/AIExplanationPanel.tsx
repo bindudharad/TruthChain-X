@@ -9,7 +9,7 @@ import { useTypewriter } from "@/hooks/useTypewriter";
 function AIExplanationPanelBase({ explanation }: { explanation: string }) {
   const [open, setOpen] = useState(true);
   const fallbackExplanation =
-    explanation?.trim() || "No detailed reasoning is available yet. The score and consensus panels still reflect the latest trust analysis.";
+    explanation?.trim() || "No detailed reasoning is available yet because the backend has not returned a verification explanation.";
   const visible = useTypewriter(fallbackExplanation);
   const keywords = ["fake", "manipulated", "risk", "credible", "suspicious", "verified", "deepfake"];
   const parts = visible.split(new RegExp(`(${keywords.join("|")})`, "gi"));

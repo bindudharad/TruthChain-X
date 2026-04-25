@@ -25,15 +25,21 @@ function NotificationCenterBase({
         <Badge tone="info">{items.length} alerts</Badge>
       </div>
       <div className="space-y-3">
-        {items.map((item) => (
-          <div key={item.id} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-            <div className="mb-2 flex items-center justify-between gap-3">
-              <p className="text-sm font-medium text-white">{item.title}</p>
-              <Badge tone={tone[item.level]}>{item.level}</Badge>
+        {items.length ? (
+          items.map((item) => (
+            <div key={item.id} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="mb-2 flex items-center justify-between gap-3">
+                <p className="text-sm font-medium text-white">{item.title}</p>
+                <Badge tone={tone[item.level]}>{item.level}</Badge>
+              </div>
+              <p className="text-sm text-slate-400">{item.detail}</p>
             </div>
-            <p className="text-sm text-slate-400">{item.detail}</p>
+          ))
+        ) : (
+          <div className="rounded-xl border border-dashed border-white/10 bg-slate-950/30 px-4 py-6 text-sm text-slate-400">
+            No active notifications right now. The next detection, Copilot alert, or reporting update will appear here automatically.
           </div>
-        ))}
+        )}
       </div>
     </Card>
   );

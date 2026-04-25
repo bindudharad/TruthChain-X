@@ -1,33 +1,35 @@
 "use client";
 
 import { ChangeEvent, DragEvent, useEffect, useRef, useState } from "react";
-import { FileText, ImagePlus, UploadCloud } from "lucide-react";
+import { FileText, ImagePlus, Link2, PlayCircle, UploadCloud } from "lucide-react";
 import { motion } from "framer-motion";
 import { scaleIn } from "@/animations/presets";
 
 type VerifyPayload = {
-  contentType: "text" | "image";
+  contentType: "text" | "image" | "video";
   content: string;
+  url?: string;
+  videoUrl?: string;
   fileName: string;
-  demoMode: boolean;
   creatorId: string;
   creatorName: string;
 };
 
 export function UploadCard({
   loading,
-  demoMode,
-  onDemoModeChange,
-  onVerify
+  onVerify,
+  onImageStateChange,
+  onInputStateChange
 }: {
   loading: boolean;
-  demoMode: boolean;
-  onDemoModeChange: (value: boolean) => void;
   onVerify: (payload: VerifyPayload) => Promise<void>;
+  onImageStateChange?: (payload: { preview: string; fileName: string; imageUrl?: string }) => void;
+  onInputStateChange?: (payload: { mode: "text" | "image" | "video" | "url"; value: string; fileName?: string; preview?: string; url?: string }) => void;
 }) {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [contentType, setContentType] = useState<"text" | "image">("text");
+  const [contentType, setContentType] = useState<"text" | "image" | "video" | "url">("text");
   const [textValue, setTextValue] = useState("");
+  const [urlValue, setUrlValue] = useState("");
   const [preview, setPreview] = useState("");
   const [fileName, setFileName] = useState("");
   const [creatorId, setCreatorId] = useState("creator_demo");
@@ -36,19 +38,22 @@ export function UploadCard({
   const [validationError, setValidationError] = useState("");
 
   useEffect(() => {
-    if (contentType === "text") {
+    if (contentType === "text" || contentType === "url" || contentType === "video") {
       setDragging(false);
+      onImageStateChange?.({ preview: "", fileName: "", imageUrl: undefined });
     }
-  }, [contentType]);
+  }, [contentType, onImageStateChange]);
 
   async function handleFiles(files: FileList | null) {
     if (!files?.length) return;
     const file = files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      setPreview(String(reader.result || ""));
+      const nextPreview = String(reader.result || "");
+      setPreview(nextPreview);
       setFileName(file.name);
       setContentType("image");
+      onImageStateChange?.({ preview: nextPreview, fileName: file.name, imageUrl: urlValue.trim() || undefined });
     };
     reader.readAsDataURL(file);
   }
@@ -63,14 +68,20 @@ export function UploadCard({
     await handleFiles(event.target.files);
   }
 
-  function switchType(nextType: "text" | "image") {
+  function switchType(nextType: "text" | "image" | "video" | "url") {
     setContentType(nextType);
     setValidationError("");
     if (nextType === "text") {
       setPreview("");
       setFileName("");
-    } else {
+      onImageStateChange?.({ preview: "", fileName: "", imageUrl: undefined });
+    } else if (nextType === "image") {
       setTextValue("");
+      onImageStateChange?.({ preview, fileName, imageUrl: urlValue.trim() || undefined });
+    } else {
+      setPreview("");
+      setFileName("");
+      onImageStateChange?.({ preview: "", fileName: "", imageUrl: undefined });
     }
   }
 
@@ -83,8 +94,43 @@ export function UploadCard({
       await onVerify({
         contentType: "text",
         content: textValue,
+        url: urlValue.trim() || undefined,
         fileName: "claim.txt",
-        demoMode,
+        creatorId,
+        creatorName
+      });
+      return;
+    }
+
+    if (contentType === "url") {
+      if (!urlValue.trim()) {
+        setValidationError("Add a website URL before starting verification.");
+        return;
+      }
+
+      await onVerify({
+        contentType: "text",
+        content: urlValue,
+        url: urlValue.trim(),
+        fileName: "url.txt",
+        creatorId,
+        creatorName
+      });
+      return;
+    }
+
+    if (contentType === "video") {
+      if (!urlValue.trim()) {
+        setValidationError("Add a video URL before starting verification.");
+        return;
+      }
+
+      await onVerify({
+        contentType: "video",
+        content: textValue.trim() || urlValue,
+        url: urlValue.trim(),
+        videoUrl: urlValue.trim(),
+        fileName: "video-link.txt",
         creatorId,
         creatorName
       });
@@ -98,8 +144,8 @@ export function UploadCard({
     await onVerify({
       contentType: "image",
       content: preview,
+      url: urlValue.trim() || undefined,
       fileName: fileName || "upload.png",
-      demoMode,
       creatorId,
       creatorName
     });
@@ -109,24 +155,52 @@ export function UploadCard({
     if (textValue.trim() || preview) {
       setValidationError("");
     }
-  }, [preview, textValue]);
+  }, [preview, textValue, urlValue]);
+
+  useEffect(() => {
+    if (contentType !== "image") return;
+    onImageStateChange?.({ preview, fileName, imageUrl: urlValue.trim() || undefined });
+  }, [contentType, fileName, onImageStateChange, preview, urlValue]);
+
+  useEffect(() => {
+    if (!onInputStateChange) return;
+
+    if (contentType === "image") {
+      onInputStateChange({ mode: "image", value: preview, fileName, preview, url: urlValue.trim() || undefined });
+      return;
+    }
+
+    if (contentType === "video") {
+      onInputStateChange({ mode: "video", value: urlValue.trim(), url: urlValue.trim() || undefined });
+      return;
+    }
+
+    if (contentType === "url") {
+      onInputStateChange({ mode: "url", value: urlValue.trim(), url: urlValue.trim() || undefined });
+      return;
+    }
+
+    onInputStateChange({ mode: "text", value: textValue });
+  }, [contentType, fileName, onInputStateChange, preview, textValue, urlValue]);
 
   return (
-    <motion.div whileHover={{ y: -5, scale: 1.01 }} className={`panel panel-hover rounded-lg p-5 sm:p-6 ${validationError ? "error-shake" : ""}`}>
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`panel rounded-2xl p-5 sm:p-6 ${validationError ? "error-shake" : ""}`}>
       <div className="mb-5 flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.28em] text-cyan-200/80">Content intake</p>
-          <p className="mt-2 text-2xl font-semibold text-white">Verify suspicious content</p>
-          <p className="mt-2 text-sm text-slate-400">Drop a viral image or paste a suspicious claim to generate a trust fingerprint.</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-cyan-200/80">Analysis Input</p>
+          <p className="mt-2 text-2xl font-semibold text-white">Analyze content</p>
+          <p className="mt-2 text-sm leading-6 text-slate-400">Paste text or a URL, upload an image, or add a video link. TruthChain-X returns a score, verdict, and simple explanation.</p>
         </div>
-        <label className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300">
-          <input type="checkbox" checked={demoMode} onChange={(e) => onDemoModeChange(e.target.checked)} />
-          Demo Mode ON
-        </label>
+        <div className="hidden rounded-xl border border-emerald-400/15 bg-emerald-400/10 px-3 py-2 text-sm text-emerald-100 sm:block">Secure analysis</div>
       </div>
 
       <div className="mb-4 flex gap-2">
-        {(["text", "image"] as const).map((type) => (
+        {([
+          { type: "text", label: "Text", icon: FileText },
+          { type: "image", label: "Image", icon: ImagePlus },
+          { type: "video", label: "Video", icon: PlayCircle },
+          { type: "url", label: "URL", icon: Link2 }
+        ] as const).map(({ type, label, icon: Icon }) => (
           <button
             key={type}
             onClick={() => switchType(type)}
@@ -134,23 +208,20 @@ export function UploadCard({
               contentType === type ? "border-cyan-400/50 bg-cyan-400/15 text-cyan-100" : "border-white/10 bg-white/5 text-slate-300"
             }`}
           >
-            {type}
+            <span className="inline-flex items-center gap-2">
+              <Icon className="h-4 w-4" />
+              {label}
+            </span>
           </button>
         ))}
       </div>
 
-      <div className="mb-4 grid gap-3 sm:grid-cols-2">
+      <div className="mb-4">
         <input
-          value={creatorId}
-          onChange={(e) => setCreatorId(e.target.value)}
-          className="h-11 rounded-lg border border-white/10 bg-slate-950/40 px-4 text-sm text-slate-100 outline-none focus:border-cyan-400/40"
-          placeholder="Creator ID"
-        />
-        <input
-          value={creatorName}
-          onChange={(e) => setCreatorName(e.target.value)}
-          className="h-11 rounded-lg border border-white/10 bg-slate-950/40 px-4 text-sm text-slate-100 outline-none focus:border-cyan-400/40"
-          placeholder="Display name"
+          value={urlValue}
+          onChange={(e) => setUrlValue(e.target.value)}
+          className="h-11 w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 text-sm text-slate-100 outline-none transition focus:border-cyan-300/40 focus:shadow-[0_0_0_3px_rgba(103,232,249,0.08)]"
+          placeholder={contentType === "video" ? "Paste video URL..." : contentType === "url" ? "Paste website URL..." : "Optional source URL..."}
         />
       </div>
 
@@ -168,6 +239,32 @@ export function UploadCard({
               Preview
             </div>
             {textValue || "Preview will appear here."}
+          </div>
+        </div>
+      ) : contentType === "url" ? (
+        <div className="space-y-4">
+          <div className={`rounded-2xl border bg-slate-950/40 p-4 transition ${validationError && contentType === "url" ? "border-rose-400/40" : "border-white/10"}`}>
+            <div className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-500">
+              <Link2 className="h-4 w-4" />
+              Website URL
+            </div>
+            <p className="text-sm leading-7 text-slate-300">Paste a website link to check phishing patterns, public presence, SSL posture, and live search signals.</p>
+          </div>
+        </div>
+      ) : contentType === "video" ? (
+        <div className="space-y-4">
+          <textarea
+            value={textValue}
+            onChange={(e) => setTextValue(e.target.value)}
+            className="min-h-40 w-full rounded-lg border border-white/10 bg-slate-950/40 p-4 text-sm text-slate-100 outline-none transition focus:border-cyan-400/40"
+            placeholder="Optional context or transcript excerpt..."
+          />
+          <div className="rounded-lg border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
+            <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-500">
+              <PlayCircle className="h-4 w-4" />
+              Video intelligence
+            </div>
+            We’ll inspect the link, extract available metadata, search the public web, and score clickbait or misinformation risk.
           </div>
         </div>
       ) : (
@@ -192,7 +289,7 @@ export function UploadCard({
           <div className="relative z-10">
             <UploadCloud className="mx-auto mb-4 h-10 w-10 text-cyan-200" />
             <p className="text-base font-medium text-white">Drag and drop your image</p>
-            <p className="mt-2 text-sm text-slate-400">We'll check for manipulation patterns and build a trust fingerprint.</p>
+            <p className="mt-2 text-sm text-slate-400">We'll check for manipulation patterns and build a phishing risk signature.</p>
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => inputRef.current?.click()}
@@ -232,7 +329,7 @@ export function UploadCard({
         >
           <span className="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-0 transition group-hover:opacity-100" />
           {loading ? <span className="gradient-spinner" /> : <ImagePlus className="h-4 w-4" />}
-          {loading ? "Analyzing..." : "Verify Content"}
+          {loading ? "Analyzing content..." : "Analyze"}
         </motion.button>
       </div>
     </motion.div>

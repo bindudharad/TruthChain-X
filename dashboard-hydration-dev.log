@@ -1,0 +1,344 @@
+
+> truthchain-x@0.1.0 dev
+> next dev --port 3014
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3014
+   - Network:      http://10.206.57.43:3014
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+ ✓ Ready in 4.9s
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 11.4s (2499 modules)
+ GET /dashboard 200 in 13419ms
+ ○ Compiling /api/trust-feed ...
+ ✓ Compiled /api/copilot/insights in 3.3s (2525 modules)
+ GET /api/risk-dashboard 200 in 5137ms
+ GET /api/history 200 in 5458ms
+ GET /api/trust-feed 200 in 5484ms
+ GET /api/community-vote?hash=demo 200 in 4653ms
+ POST /api/copilot/insights 200 in 4679ms
+ GET /api/alerts 200 in 5654ms
+ ○ Compiling /api/intelligence/lineage ...
+ ✓ Compiled /api/intelligence/lineage in 1459ms (2538 modules)
+ GET /api/copilot/alerts?hash=demo 200 in 1692ms
+ GET /api/copilot/user-insights?hash=demo 200 in 1738ms
+ GET /api/intelligence/global?hash=demo 200 in 1807ms
+ GET /api/intelligence/network?hash=demo 200 in 1854ms
+ GET /api/intelligence/lineage?hash=demo 200 in 1904ms
+ POST /api/copilot/suggestions 200 in 1961ms
+ ○ Compiling /api/intelligence/prediction ...
+ ✓ Compiled /api/intelligence/prediction in 1497ms (2542 modules)
+ POST /api/copilot/insights 200 in 1681ms
+ POST /api/copilot/suggestions 200 in 1726ms
+ GET /api/intelligence/feed?hash=demo 200 in 1774ms
+ GET /api/intelligence/prediction?hash=demo 200 in 1826ms
+ GET /api/risk-dashboard 200 in 1825ms
+ GET /api/history 200 in 365ms
+ GET /api/trust-feed 200 in 415ms
+ GET /api/community-vote?hash=demo 200 in 435ms
+ GET /api/alerts 200 in 465ms
+ GET /api/copilot/alerts?hash=demo 200 in 512ms
+ GET /dashboard 200 in 2389ms
+ GET /api/copilot/user-insights?hash=demo 200 in 189ms
+ GET /api/intelligence/global?hash=demo 200 in 264ms
+ GET /api/intelligence/network?hash=demo 200 in 315ms
+ GET /api/intelligence/lineage?hash=demo 200 in 358ms
+ GET /api/intelligence/feed?hash=demo 200 in 394ms
+ GET /api/intelligence/prediction?hash=demo 200 in 411ms
+ GET /api/alerts 200 in 53ms
+ POST /api/copilot/insights 200 in 129ms
+ POST /api/copilot/suggestions 200 in 175ms
+ GET /api/copilot/alerts?hash=demo 200 in 200ms
+ GET /api/copilot/user-insights?hash=demo 200 in 229ms
+ GET /api/intelligence/global?hash=demo 200 in 144ms
+ GET /api/intelligence/network?hash=demo 200 in 195ms
+ GET /api/intelligence/lineage?hash=demo 200 in 238ms
+ GET /api/intelligence/feed?hash=demo 200 in 266ms
+ GET /api/intelligence/prediction?hash=demo 200 in 290ms
+ GET /api/alerts 200 in 68ms
+ POST /api/copilot/insights 200 in 134ms
+ POST /api/copilot/suggestions 200 in 197ms
+ GET /api/copilot/alerts?hash=demo 200 in 214ms
+ GET /api/copilot/user-insights?hash=demo 200 in 249ms
+ GET /api/intelligence/global?hash=demo 200 in 152ms
+ GET /api/intelligence/network?hash=demo 200 in 178ms
+ GET /api/intelligence/lineage?hash=demo 200 in 205ms
+ GET /api/intelligence/feed?hash=demo 200 in 231ms
+ GET /api/intelligence/prediction?hash=demo 200 in 264ms
+ GET /api/alerts 200 in 50ms
+ POST /api/copilot/insights 200 in 136ms
+ GET /api/copilot/alerts?hash=demo 200 in 160ms
+ POST /api/copilot/suggestions 200 in 196ms
+ GET /api/copilot/user-insights?hash=demo 200 in 222ms
+ GET /api/alerts 200 in 94ms
+ GET /api/intelligence/global?hash=demo 200 in 142ms
+ GET /api/intelligence/network?hash=demo 200 in 185ms
+ GET /api/intelligence/lineage?hash=demo 200 in 216ms
+ GET /api/intelligence/feed?hash=demo 200 in 254ms
+ GET /api/intelligence/prediction?hash=demo 200 in 290ms
+ POST /api/copilot/insights 200 in 145ms
+ POST /api/copilot/suggestions 200 in 188ms
+ GET /api/copilot/alerts?hash=demo 200 in 219ms
+ GET /api/copilot/user-insights?hash=demo 200 in 256ms
+ GET /api/alerts 200 in 56ms
+ GET /api/intelligence/global?hash=demo 200 in 163ms
+ GET /api/intelligence/network?hash=demo 200 in 184ms
+ GET /api/intelligence/feed?hash=demo 200 in 213ms
+ GET /api/intelligence/lineage?hash=demo 200 in 231ms
+ GET /api/intelligence/prediction?hash=demo 200 in 262ms
+ GET /api/alerts 200 in 104ms
+ POST /api/copilot/insights 200 in 163ms
+ POST /api/copilot/suggestions 200 in 202ms
+ GET /api/copilot/alerts?hash=demo 200 in 228ms
+ GET /api/copilot/user-insights?hash=demo 200 in 260ms
+ GET /api/alerts 200 in 56ms
+ POST /api/copilot/insights 200 in 147ms
+ POST /api/copilot/suggestions 200 in 186ms
+ GET /api/copilot/alerts?hash=demo 200 in 213ms
+ GET /api/copilot/user-insights?hash=demo 200 in 244ms
+ GET /api/intelligence/global?hash=demo 200 in 159ms
+ GET /api/intelligence/network?hash=demo 200 in 190ms
+ GET /api/intelligence/lineage?hash=demo 200 in 222ms
+ GET /api/intelligence/feed?hash=demo 200 in 256ms
+ GET /api/intelligence/prediction?hash=demo 200 in 275ms
+ GET /api/alerts 200 in 67ms
+ POST /api/copilot/insights 200 in 138ms
+ POST /api/copilot/suggestions 200 in 197ms
+ GET /api/copilot/alerts?hash=demo 200 in 223ms
+ GET /api/copilot/user-insights?hash=demo 200 in 265ms
+ GET /api/intelligence/global?hash=demo 200 in 131ms
+ GET /api/intelligence/network?hash=demo 200 in 159ms
+ GET /api/intelligence/lineage?hash=demo 200 in 180ms
+ GET /api/intelligence/feed?hash=demo 200 in 201ms
+ GET /api/intelligence/prediction?hash=demo 200 in 233ms
+ GET /api/alerts 200 in 54ms
+ POST /api/copilot/insights 200 in 142ms
+ POST /api/copilot/suggestions 200 in 181ms
+ GET /api/copilot/user-insights?hash=demo 200 in 192ms
+ GET /api/copilot/alerts?hash=demo 200 in 226ms
+ GET /api/alerts 200 in 45ms
+ GET /api/intelligence/global?hash=demo 200 in 162ms
+ GET /api/intelligence/network?hash=demo 200 in 210ms
+ GET /api/intelligence/lineage?hash=demo 200 in 227ms
+ GET /api/intelligence/feed?hash=demo 200 in 256ms
+ GET /api/intelligence/prediction?hash=demo 200 in 272ms
+ POST /api/copilot/insights 200 in 128ms
+ POST /api/copilot/suggestions 200 in 162ms
+ GET /api/copilot/alerts?hash=demo 200 in 193ms
+ GET /api/copilot/user-insights?hash=demo 200 in 220ms
+ GET /api/alerts 200 in 48ms
+ GET /api/intelligence/global?hash=demo 200 in 171ms
+ GET /api/intelligence/network?hash=demo 200 in 201ms
+ GET /api/intelligence/lineage?hash=demo 200 in 229ms
+ GET /api/intelligence/feed?hash=demo 200 in 263ms
+ GET /api/intelligence/prediction?hash=demo 200 in 303ms
+ GET /api/alerts 200 in 96ms
+ POST /api/copilot/insights 200 in 158ms
+ POST /api/copilot/suggestions 200 in 203ms
+ GET /api/copilot/alerts?hash=demo 200 in 227ms
+ GET /api/copilot/user-insights?hash=demo 200 in 256ms
+ GET /api/alerts 200 in 44ms
+ POST /api/copilot/insights 200 in 162ms
+ POST /api/copilot/suggestions 200 in 248ms
+ GET /api/copilot/alerts?hash=demo 200 in 262ms
+ GET /api/copilot/user-insights?hash=demo 200 in 317ms
+ GET /api/intelligence/global?hash=demo 200 in 347ms
+ GET /api/intelligence/network?hash=demo 200 in 387ms
+ GET /api/intelligence/lineage?hash=demo 200 in 324ms
+ GET /api/intelligence/feed?hash=demo 200 in 257ms
+ GET /api/intelligence/prediction?hash=demo 200 in 292ms
+ GET /api/alerts 200 in 44ms
+ POST /api/copilot/insights 200 in 146ms
+ POST /api/copilot/suggestions 200 in 192ms
+ GET /api/copilot/alerts?hash=demo 200 in 222ms
+ GET /api/copilot/user-insights?hash=demo 200 in 264ms
+ GET /api/intelligence/global?hash=demo 200 in 179ms
+ GET /api/intelligence/network?hash=demo 200 in 234ms
+ GET /api/intelligence/lineage?hash=demo 200 in 275ms
+ GET /api/intelligence/feed?hash=demo 200 in 318ms
+ GET /api/intelligence/prediction?hash=demo 200 in 351ms
+ GET /api/alerts 200 in 50ms
+ POST /api/copilot/insights 200 in 222ms
+ POST /api/copilot/suggestions 200 in 242ms
+ GET /api/copilot/alerts?hash=demo 200 in 210ms
+ GET /api/copilot/user-insights?hash=demo 200 in 227ms
+ GET /api/alerts 200 in 50ms
+ GET /api/intelligence/global?hash=demo 200 in 171ms
+ GET /api/intelligence/network?hash=demo 200 in 216ms
+ GET /api/intelligence/lineage?hash=demo 200 in 234ms
+ GET /api/intelligence/feed?hash=demo 200 in 252ms
+ GET /api/intelligence/prediction?hash=demo 200 in 279ms
+ POST /api/copilot/insights 200 in 148ms
+ POST /api/copilot/suggestions 200 in 191ms
+ GET /api/copilot/alerts?hash=demo 200 in 222ms
+ GET /api/copilot/user-insights?hash=demo 200 in 265ms
+ GET /api/alerts 200 in 54ms
+ GET /api/intelligence/global?hash=demo 200 in 153ms
+ GET /api/intelligence/network?hash=demo 200 in 180ms
+ GET /api/intelligence/lineage?hash=demo 200 in 211ms
+ GET /api/intelligence/feed?hash=demo 200 in 245ms
+ GET /api/intelligence/prediction?hash=demo 200 in 279ms
+ POST /api/copilot/insights 200 in 158ms
+ GET /api/alerts 200 in 202ms
+ POST /api/copilot/suggestions 200 in 248ms
+ GET /api/copilot/alerts?hash=demo 200 in 292ms
+ GET /api/copilot/user-insights?hash=demo 200 in 340ms
+ GET /api/alerts 200 in 49ms
+ GET /api/intelligence/global?hash=demo 200 in 138ms
+ GET /api/intelligence/network?hash=demo 200 in 173ms
+ GET /api/intelligence/prediction?hash=demo 200 in 185ms
+ GET /api/intelligence/lineage?hash=demo 200 in 207ms
+ GET /api/intelligence/feed?hash=demo 200 in 237ms
+ POST /api/copilot/insights 200 in 164ms
+ POST /api/copilot/suggestions 200 in 204ms
+ GET /api/copilot/alerts?hash=demo 200 in 238ms
+ GET /api/copilot/user-insights?hash=demo 200 in 284ms
+ GET /api/alerts 200 in 55ms
+ POST /api/copilot/insights 200 in 138ms
+ POST /api/copilot/suggestions 200 in 167ms
+ GET /api/copilot/alerts?hash=demo 200 in 188ms
+ GET /api/copilot/user-insights?hash=demo 200 in 211ms
+ GET /api/intelligence/global?hash=demo 200 in 145ms
+ GET /api/intelligence/network?hash=demo 200 in 172ms
+ GET /api/intelligence/lineage?hash=demo 200 in 194ms
+ GET /api/intelligence/feed?hash=demo 200 in 218ms
+ GET /api/intelligence/prediction?hash=demo 200 in 244ms
+ GET /api/alerts 200 in 48ms
+ POST /api/copilot/insights 200 in 153ms
+ POST /api/copilot/suggestions 200 in 192ms
+ GET /api/copilot/alerts?hash=demo 200 in 210ms
+ GET /api/copilot/user-insights?hash=demo 200 in 236ms
+ GET /api/alerts 200 in 194ms
+ GET /api/intelligence/global?hash=demo 200 in 237ms
+ GET /api/intelligence/feed?hash=demo 200 in 328ms
+ GET /api/intelligence/prediction?hash=demo 200 in 357ms
+ GET /api/intelligence/network?hash=demo 200 in 387ms
+ GET /api/intelligence/lineage?hash=demo 200 in 411ms
+ POST /api/copilot/insights 200 in 129ms
+ POST /api/copilot/suggestions 200 in 168ms
+ GET /api/copilot/alerts?hash=demo 200 in 189ms
+ GET /api/copilot/user-insights?hash=demo 200 in 212ms
+ GET /api/alerts 200 in 58ms
+ GET /api/intelligence/global?hash=demo 200 in 143ms
+ GET /api/intelligence/network?hash=demo 200 in 185ms
+ GET /api/intelligence/lineage?hash=demo 200 in 210ms
+ GET /api/intelligence/feed?hash=demo 200 in 237ms
+ GET /api/intelligence/prediction?hash=demo 200 in 261ms
+ GET /api/alerts 200 in 127ms
+ POST /api/copilot/insights 200 in 178ms
+ POST /api/copilot/suggestions 200 in 200ms
+ GET /api/copilot/alerts?hash=demo 200 in 239ms
+ GET /api/copilot/user-insights?hash=demo 200 in 265ms
+ GET /api/intelligence/global?hash=demo 200 in 245ms
+ GET /api/intelligence/network?hash=demo 200 in 267ms
+ GET /api/intelligence/lineage?hash=demo 200 in 291ms
+ GET /api/intelligence/feed?hash=demo 200 in 321ms
+ GET /api/intelligence/prediction?hash=demo 200 in 330ms
+ GET /api/alerts 200 in 54ms
+ POST /api/copilot/suggestions 200 in 131ms
+ GET /api/copilot/alerts?hash=demo 200 in 163ms
+ POST /api/copilot/insights 200 in 201ms
+ GET /api/copilot/user-insights?hash=demo 200 in 227ms
+ GET /api/alerts 200 in 81ms
+ POST /api/copilot/insights 200 in 196ms
+ POST /api/copilot/suggestions 200 in 259ms
+ GET /api/copilot/alerts?hash=demo 200 in 291ms
+ GET /api/intelligence/global?hash=demo 200 in 320ms
+ GET /api/intelligence/network?hash=demo 200 in 353ms
+ GET /api/copilot/user-insights?hash=demo 200 in 393ms
+ GET /api/intelligence/lineage?hash=demo 200 in 342ms
+ GET /api/intelligence/feed?hash=demo 200 in 170ms
+ GET /api/intelligence/prediction?hash=demo 200 in 199ms
+ ✓ Compiled in 1021ms (1187 modules)
+ GET /dashboard 200 in 145ms
+ GET /api/alerts 200 in 67ms
+ POST /api/copilot/insights 200 in 144ms
+ POST /api/copilot/suggestions 200 in 192ms
+ GET /api/copilot/alerts?hash=demo 200 in 221ms
+ GET /api/copilot/user-insights?hash=demo 200 in 248ms
+ GET /api/intelligence/global?hash=demo 200 in 149ms
+ GET /api/intelligence/network?hash=demo 200 in 183ms
+ GET /api/intelligence/lineage?hash=demo 200 in 212ms
+ GET /api/intelligence/feed?hash=demo 200 in 237ms
+ GET /api/intelligence/prediction?hash=demo 200 in 269ms
+ GET /api/alerts 200 in 47ms
+ POST /api/copilot/insights 200 in 158ms
+ POST /api/copilot/suggestions 200 in 187ms
+ GET /api/copilot/alerts?hash=demo 200 in 204ms
+ GET /api/copilot/user-insights?hash=demo 200 in 239ms
+ GET /api/alerts 200 in 59ms
+ GET /api/intelligence/global?hash=demo 200 in 171ms
+ GET /api/intelligence/network?hash=demo 200 in 193ms
+ GET /api/intelligence/lineage?hash=demo 200 in 220ms
+ GET /api/intelligence/feed?hash=demo 200 in 249ms
+ GET /api/intelligence/prediction?hash=demo 200 in 275ms
+ ✓ Compiled in 2.5s (2547 modules)
+ GET /api/alerts 200 in 230ms
+ GET /dashboard 200 in 625ms
+ ○ Compiling /api/risk-dashboard ...
+ ✓ Compiled /api/risk-dashboard in 1456ms (2540 modules)
+ GET /api/risk-dashboard 200 in 2539ms
+ GET /api/dashboard/summary?hash=demo 404 in 2518ms
+ GET /api/alerts 200 in 68ms
+ GET /api/dashboard/summary?hash=demo 404 in 111ms
+ GET /api/alerts 200 in 55ms
+ GET /api/dashboard/summary?hash=demo 404 in 79ms
+ ✓ Compiled in 1459ms (2554 modules)
+ GET /dashboard 200 in 211ms
+ GET /api/alerts 200 in 99ms
+ GET /api/dashboard/summary?hash=demo 404 in 366ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 7.1s (2893 modules)
+ GET /dashboard 500 in 7537ms
+ GET /dashboard 200 in 332ms
+ GET /dashboard 200 in 82ms
+ GET /dashboard 200 in 85ms
+ GET /dashboard 200 in 360ms
+ ✓ Compiled in 2.2s (2893 modules)
+ GET /api/alerts 200 in 252ms
+ GET /api/risk-dashboard 200 in 283ms
+ ○ Compiling /api/dashboard/summary ...
+ ✓ Compiled /api/dashboard/summary in 2.1s (2887 modules)
+ GET /api/risk-dashboard 200 in 2133ms
+ GET /api/dashboard/summary?hash=demo 200 in 2554ms
+ GET /api/alerts 200 in 2335ms
+ GET /api/dashboard/summary?hash=demo 200 in 177ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 160ms
+ ✓ Compiled in 1305ms (2889 modules)
+ GET /dashboard 200 in 301ms
+ GET /api/alerts 200 in 105ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 236ms
+ ✓ Compiled in 1397ms (2889 modules)
+ GET /dashboard 200 in 470ms
+ GET /api/alerts 200 in 70ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 175ms
+ ✓ Compiled in 1241ms (2889 modules)
+ GET /dashboard 200 in 411ms
+ GET /api/alerts 200 in 68ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 193ms
+ GET /api/alerts 200 in 61ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 197ms
+ GET /api/alerts 200 in 81ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 178ms
+ GET /api/alerts 200 in 65ms
+ ✓ Compiled in 598ms (1448 modules)
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 238ms
+ GET /dashboard 200 in 886ms
+ GET /api/alerts 200 in 95ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 200 in 176ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1388ms (2882 modules)
+ GET /api/alerts 500 in 13804ms
+ GET /api/alerts 500 in 1526ms
+ GET /dashboard 500 in 16215ms
+ GET /dashboard 500 in 1352ms
+ GET /api/alerts 500 in 3340ms
+ GET /api/alerts 500 in 991ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 500 in 16932ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 500 in 1393ms
+ GET /dashboard 500 in 3079ms
+ GET /dashboard 500 in 432ms
+ GET /api/dashboard/summary?hash=90c6e0c07692fe26f2b01561efe8ef28b77cc463caa5d81f5a78e548b28a4b8f 500 in 1095ms

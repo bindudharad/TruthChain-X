@@ -25,7 +25,7 @@ export function AIConsensusPanel({
     <motion.div whileHover={{ y: -5, scale: 1.01 }} className="panel panel-hover rounded-lg p-6">
       <div className="mb-5">
         <p className="text-lg font-semibold text-white">AI Consensus Panel</p>
-        <p className="text-sm text-slate-400">Specialized models contribute weighted signals to the final trust fingerprint.</p>
+        <p className="text-sm text-slate-400">Specialized models contribute weighted signals to the final phishing risk signature.</p>
       </div>
       <div className="space-y-4">
         {bars.map((bar) => (
