@@ -1,28 +1,27 @@
-# TruthChain X
+# TruthChain-X
 
-TruthChain X is a Global Trust Intelligence Platform: a startup-grade system for content verification, creator reputation, misinformation tracking, predictive trust signals, and blockchain-backed trust proofs.
+TruthChain-X is a browser-based real-time phishing detection tool that analyzes URLs and page content, assigns a phishing risk score, and helps users avoid credential theft and scam pages.
 
-It is built as a production-oriented monorepo MVP with clear service boundaries, API monetization primitives, and a frontend that reads like a real SaaS product instead of a hackathon toy.
+The current repo still contains some legacy trust-platform modules, but the active hackathon product is now centered on a focused phishing workflow: browser extension -> `/api/analyze` -> phishing verdict -> explanation -> reporting and similarity review.
 
 ## What the product does
 
-- Verifies text, image, and video-style submissions with a multi-model AI pipeline
-- Generates a reusable `Trust Fingerprint` for each piece of content
-- Maintains a `Creator Reputation` profile with credibility and risk scoring
-- Detects re-uploads by content hash and returns existing verification history
-- Tracks misinformation spread, trust evolution, and platform-wide risk signals
-- Stores trust proofs on blockchain, with a testnet-ready write path and safe queued fallback
-- Exposes partner-ready APIs with API keys, JWT auth, rate limiting, and usage tracking
-- Supports free, pro, and enterprise API plans
+- Analyzes suspicious URLs and page text with phishing-focused heuristics
+- Detects typosquatting, missing HTTPS, IP-host URLs, phishing keywords, and credential traps
+- Generates a reusable `Phishing Risk Signature` for each scan
+- Reuses the existing AI explanation and similarity pipeline to explain why a page looks risky
+- Powers a browser extension that warns users in real time on dangerous pages
+- Supports a clean dashboard for demo-friendly review, similarity lookup, and reporting
 
 ## Product surface
 
 ### UI pages
 
-- `/` and `/dashboard` -> live verification dashboard
-- `/analytics` -> platform analytics and global risk monitoring
-- `/reports` -> executive-style reports and enterprise readiness view
-- `/api-hub` -> API product catalog, auth model, and usage view
+- `/` and `/dashboard` -> phishing operations dashboard
+- `/analyze` -> scan URLs, text, and suspicious page content
+- `/similarity` -> reverse-search style scam matching
+- `/reports` -> reporting and moderation actions
+- `/copilot`, `/intelligence`, `/profile` -> supporting demo views still available in the repo
 
 ### API surface
 
@@ -165,7 +164,7 @@ server/
 
 ## Authentication and monetization
 
-TruthChain X now supports platform-style access control:
+TruthChain-X now supports platform-style access control:
 
 - API keys for external integrations
 - JWT bearer tokens for authenticated clients
@@ -212,7 +211,7 @@ Body:
 
 ### `GET /api/trust-score/{id}`
 
-Fetch a stored trust fingerprint by content hash.
+Fetch a stored phishing risk signature by content hash.
 
 ### `GET /api/trust/{hash}`
 
@@ -341,7 +340,7 @@ Then move long-running AI tasks onto a queue such as RabbitMQ or Kafka.
 1. Open `/`
 2. Paste the fake health claim and keep `Demo Mode ON`
 3. Click `Verify Content`
-4. Show Trust Fingerprint, creator reputation, consensus, and blockchain proof
+4. Show the phishing risk signature, explanation, consensus, and warning output
 5. Navigate to `/analytics` and `/reports` for platform-level storytelling
 6. Open `/api-hub` to show monetization and partner integration capability
 
@@ -352,3 +351,5 @@ Then move long-running AI tasks onto a queue such as RabbitMQ or Kafka.
 - The codebase is already segmented by service boundary
 - Identity, analytics, and usage tracking are part of the core system
 - The architecture can evolve into microservices without rewriting the product
+#   T r u t h C h a i n X  
+ 
