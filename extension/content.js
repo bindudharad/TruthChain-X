@@ -34,7 +34,9 @@
       if (!response?.ok || !response.data) return;
 
       const result = response.data;
-      if (result.riskLevel !== "dangerous") return;
+      const score = Number(result.score || result.trustScore || result.phishingRiskScore || 0);
+      const verdict = String(result.verdict || result.category || result.riskLevel || "").toLowerCase();
+      if (!(score >= 71 || verdict.includes("risk") || verdict.includes("danger"))) return;
       if (document.getElementById("truthchain-phishing-warning")) return;
 
       const banner = document.createElement("div");

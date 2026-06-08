@@ -1,4 +1,4 @@
-import { analyzeTextContent } from "@/lib/universal-analysis";
+import { analyzeInput } from "@/server/services/trust-analysis/engine";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,7 +11,13 @@ export async function POST(request: Request) {
       return Response.json({ error: "Text input is required." }, { status: 400 });
     }
 
-    const result = await analyzeTextContent(text);
+    const result = await analyzeInput({
+      type: "text",
+      content: text,
+      fileName: "text-analysis.txt",
+      creatorId: "text-analysis",
+      creatorName: "TruthChain-X Text Analysis"
+    });
     return Response.json(result);
   } catch (error) {
     return Response.json(

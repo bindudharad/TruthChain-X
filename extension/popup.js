@@ -1,98 +1,65 @@
-function setMeter(score, riskLevel) {
-  const meter = document.getElementById("meter");
-  if (!meter) return;
-
-  const safeScore = Math.max(0, Math.min(100, Number(score || 0)));
-  meter.style.setProperty("--value", `${(safeScore / 100) * 360}deg`);
-  meter.style.setProperty("--meter-color", riskLevel === "dangerous" ? "#ef4444" : riskLevel === "suspicious" ? "#f59e0b" : "#10b981");
-  meter.classList.toggle("pulse", riskLevel === "dangerous");
+function tone(score, verdict) {
+  const text = String(verdict || "").toLowerCase();
+  if (text.includes("risk") || score >= 71) return "danger";
+  if (text.includes("suspicious") || score >= 31) return "warning";
+  return "safe";
 }
 
-function buildReport(result) {
-  return [
-    `Risk Score: ${result.phishingRiskScore || 0}%`,
-    `Risk Level: ${result.riskLevel || "unknown"}`,
-    `Attack Type: ${String(result.attackType || "unknown").replace(/-/g, " ")}`,
-    `URL: ${result.analyzedUrl || "N/A"}`,
-    `Reasons: ${(result.reasons || []).join("; ") || "None"}`
-  ].join("\n");
+function updateResult(result) {
+  const score = Number(result?.score ?? result?.trustScore ?? result?.phishingRiskScore ?? 0);
+  const verdict = result?.verdict ?? result?.category ?? result?.riskLevel ?? (score >= 71 ? "High Risk" : score >= 31 ? "Suspicious" : "Safe");
+  const explanation = result?.explanation ?? result?.reason ?? result?.simpleOutput?.reason ?? "Analysis completed.";
+  const toneName = tone(score, verdict);
+  document.getElementById("score").textContent = `${score}`;
+  const badge = document.getElementById("verdict");
+  badge.textContent = String(verdict).toUpperCase();
+  badge.className = `badge ${toneName}`;
+  document.getElementById("fill").style.width = `${Math.max(0, Math.min(100, score))}%`;
+  document.getElementById("fill").style.background = toneName === "danger" ? "#fb7185" : toneName === "warning" ? "#fbbf24" : "#34d399";
+  document.getElementById("explanation").textContent = explanation;
 }
 
-function updatePopup(result) {
-  const statusBadge = document.getElementById("statusBadge");
-  const score = document.getElementById("score");
-  const attackType = document.getElementById("attackType");
-  const summary = document.getElementById("summary");
-  const reasons = document.getElementById("reasons");
+function setError(message) {
+  document.getElementById("error").textContent = message || "";
+}
 
-  if (!result) {
-    statusBadge.textContent = "No scan yet";
-    statusBadge.className = "badge warning";
-    setMeter(0, "suspicious");
+async function analyze(inputType, inputData) {
+  setError("");
+  if (!inputData?.trim()) {
+    setError("Add content before analyzing.");
     return;
   }
-
-  statusBadge.textContent = String(result.riskLevel || "unknown").toUpperCase();
-  statusBadge.className = `badge ${result.riskLevel === "dangerous" ? "danger" : result.riskLevel === "suspicious" ? "warning" : "safe"}`;
-  score.textContent = `${result.phishingRiskScore || 0}%`;
-  attackType.textContent = `Attack type: ${String(result.attackType || "unknown").replace(/-/g, " ")}`;
-  summary.textContent =
-    result.riskLevel === "dangerous"
-      ? "This page should be treated as unsafe."
-      : result.riskLevel === "suspicious"
-        ? "Proceed carefully and verify the domain."
-        : "No strong phishing indicators detected.";
-  setMeter(result.phishingRiskScore || 0, result.riskLevel);
-
-  reasons.innerHTML = "";
-  (result.reasons || ["No phishing-specific reasons found."]).slice(0, 4).forEach((reason) => {
-    const item = document.createElement("li");
-    item.textContent = reason;
-    reasons.appendChild(item);
-  });
-}
-
-async function scanActiveTab() {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab?.id || !tab.url) return;
-
-  chrome.tabs.sendMessage(tab.id, { type: "PING" }, async () => {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ["content.js"]
-    });
-  });
-}
-
-document.getElementById("scanNow")?.addEventListener("click", async () => {
-  await scanActiveTab();
-  window.setTimeout(() => {
-    chrome.storage.local.get(["latestPhishingAnalysis"], ({ latestPhishingAnalysis }) => {
-      updatePopup(latestPhishingAnalysis);
-    });
-  }, 900);
-});
-
-document.getElementById("copyReport")?.addEventListener("click", async () => {
-  chrome.storage.local.get(["latestPhishingAnalysis"], async ({ latestPhishingAnalysis }) => {
-    if (!latestPhishingAnalysis) return;
-    try {
-      await navigator.clipboard.writeText(buildReport(latestPhishingAnalysis));
-      const button = document.getElementById("copyReport");
-      if (button) {
-        const previous = button.textContent;
-        button.textContent = "Copied";
-        window.setTimeout(() => {
-          button.textContent = previous;
-        }, 1400);
-      }
-    } catch {
-      // Ignore clipboard errors in restricted contexts.
+  const button = document.getElementById("analyze");
+  const previous = button.textContent;
+  button.textContent = "Analyzing...";
+  button.disabled = true;
+  chrome.runtime.sendMessage({ type: "ANALYZE_INPUT", payload: { inputType, inputData } }, (response) => {
+    button.textContent = previous;
+    button.disabled = false;
+    if (!response?.ok) {
+      setError(response?.error || "Analysis failed.");
+      return;
     }
+    updateResult(response.data);
   });
+}
+
+document.getElementById("analyze")?.addEventListener("click", async () => {
+  const input = document.getElementById("input").value;
+  const inputType = /^https?:\/\//i.test(input) ? "link" : "text";
+  await analyze(inputType, input);
 });
 
-chrome.storage.local.get(["latestPhishingAnalysis"], ({ latestPhishingAnalysis }) => {
-  updatePopup(latestPhishingAnalysis);
+document.getElementById("scanPage")?.addEventListener("click", async () => {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  await analyze("link", tab?.url || "");
 });
 
+document.getElementById("openApp")?.addEventListener("click", () => {
+  chrome.tabs.create({ url: "http://localhost:3000/analyze" });
+});
+
+chrome.storage.local.get(["latestAnalysis", "latestPhishingAnalysis", "latestAnalysisError"], ({ latestAnalysis, latestPhishingAnalysis, latestAnalysisError }) => {
+  if (latestAnalysis || latestPhishingAnalysis) updateResult(latestAnalysis || latestPhishingAnalysis);
+  if (latestAnalysisError) setError(latestAnalysisError);
+});

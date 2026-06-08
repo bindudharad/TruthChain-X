@@ -1,5 +1,75 @@
 [
   {
+    "id": "c47f68ed-877c-466a-bc23-26d7f1ab5d28",
+    "userId": "analyst",
+    "tokenHash": "a13140c2a0aaf4dfefd5af91a37ae34de1ce09f778bec03f56e047c1a76a47f2",
+    "role": "user",
+    "plan": "free",
+    "name": "Trust Analyst",
+    "expiresAt": 1777965785404,
+    "createdAt": "2026-04-28T07:23:05.404Z"
+  },
+  {
+    "id": "6c843bd9-35da-4f36-b233-85df557c0d22",
+    "userId": "analyst",
+    "tokenHash": "779559ab39529bcd9fba4b6d9664ab9a5814449cb4529d10eaacbea01d6e71ff",
+    "role": "user",
+    "plan": "free",
+    "name": "Trust Analyst",
+    "expiresAt": 1777947552034,
+    "createdAt": "2026-04-28T02:19:12.034Z"
+  },
+  {
+    "id": "5da096d4-7b20-4474-a0cd-97dad01b3b3a",
+    "userId": "analyst",
+    "tokenHash": "ecc9aab160c5aef4abb1b06015d777e54f599702dfa6a8957da50b5013049297",
+    "role": "user",
+    "plan": "free",
+    "name": "Trust Analyst",
+    "expiresAt": 1777898454261,
+    "createdAt": "2026-04-27T12:40:54.261Z"
+  },
+  {
+    "id": "660e44d7-ad6a-4f04-911d-ac521ee1e093",
+    "userId": "analyst",
+    "tokenHash": "094f3299b66e095fcbb6fccfdff4e41dde6ef6f99ce97cd5f2d25c7e02da90af",
+    "role": "user",
+    "plan": "free",
+    "name": "Trust Analyst",
+    "expiresAt": 1777858828771,
+    "createdAt": "2026-04-27T01:40:28.771Z"
+  },
+  {
+    "id": "48940e57-e756-4cec-9350-47f5fecd4265",
+    "userId": "analyst",
+    "tokenHash": "f339b37a73a7c3feeb8bd265d55bf156b27bea2d878eed0ce85fc4b64d483134",
+    "role": "user",
+    "plan": "free",
+    "name": "Trust Analyst",
+    "expiresAt": 1777828595787,
+    "createdAt": "2026-04-26T17:16:35.787Z"
+  },
+  {
+    "id": "3c6c8c5b-960c-4081-b689-d6adee58581b",
+    "userId": "analyst",
+    "tokenHash": "c20f990fa7c90e08e749fb4467c4197dee5f30e0161f1d3e79278a3253ef88f5",
+    "role": "user",
+    "plan": "free",
+    "name": "Trust Analyst",
+    "expiresAt": 1777828489912,
+    "createdAt": "2026-04-26T17:14:49.912Z"
+  },
+  {
+    "id": "facba1a9-6cd7-4428-bb0a-dc85e6071fe0",
+    "userId": "analyst",
+    "tokenHash": "f8cbef6c337f52e44e4b760daf4982310eb3ffcee67a374d572e4955eb748b21",
+    "role": "user",
+    "plan": "free",
+    "name": "Trust Analyst",
+    "expiresAt": 1777817221387,
+    "createdAt": "2026-04-26T14:07:01.387Z"
+  },
+  {
     "id": "5d9b392f-d8c6-421f-a454-01bb248be889",
     "userId": "qa_user",
     "tokenHash": "5147e4ff2f88b4422f18215a06a134149f3b4b50aca9718f9344fdc7a8cbae7d",

@@ -41,6 +41,14 @@ import {
 
 export type AnalyzeResponse = DashboardAnalyzeResponse;
 
+const LAST_ANALYSIS_STORAGE_KEY = "truthchain:lastAnalysis";
+
+type StoredAnalysisCache = {
+  requestKey: string;
+  result: AnalyzeResponse;
+  savedAt: string;
+};
+
 type HistoryResponse = {
   records: VerificationRecord[];
   trendingAlerts: TrendingAlert[];
@@ -208,6 +216,45 @@ export function DashboardStateProvider({
   const [copilot, setCopilot] = useState<CopilotSnapshot>(initialSnapshot?.copilot ?? buildEmptyCopilot());
   const [intelligence, setIntelligence] = useState<GlobalIntelligenceSnapshot>(initialSnapshot?.intelligence ?? buildEmptyIntelligence());
 
+  const persistLastAnalysis = useCallback((requestKey: string, nextResult: AnalyzeResponse) => {
+    if (typeof window === "undefined") return;
+    try {
+      const payload: StoredAnalysisCache = {
+        requestKey,
+        result: nextResult,
+        savedAt: new Date().toISOString()
+      };
+      window.localStorage.setItem(LAST_ANALYSIS_STORAGE_KEY, JSON.stringify(payload));
+    } catch {
+      // ignore local storage failures
+    }
+  }, []);
+
+  const readLastAnalysis = useCallback((): StoredAnalysisCache | null => {
+    if (typeof window === "undefined") return null;
+    try {
+      const raw = window.localStorage.getItem(LAST_ANALYSIS_STORAGE_KEY);
+      if (!raw) return null;
+      return JSON.parse(raw) as StoredAnalysisCache;
+    } catch {
+      return null;
+    }
+  }, []);
+
+  const buildRequestKey = useCallback((payload: {
+    contentType: "text" | "image" | "video";
+    content: string;
+    url?: string;
+    imageUrl?: string;
+    videoUrl?: string;
+    fileName: string;
+    creatorId: string;
+    creatorName: string;
+  }) => {
+    const primary = (payload.url || payload.videoUrl || payload.imageUrl || payload.content || "").trim();
+    return `${payload.contentType}:${primary}`;
+  }, []);
+
   const applySnapshot = useCallback((snapshot: DashboardSnapshot) => {
     setResult(snapshot.result);
     setRecords(snapshot.records || []);
@@ -312,6 +359,43 @@ export function DashboardStateProvider({
     setLoading(true);
     setError("");
     try {
+      const requestKey = buildRequestKey(payload);
+      const currentPrimary = (payload.url || payload.videoUrl || payload.imageUrl || payload.content || "").trim();
+
+      const cachedLocal = readLastAnalysis();
+      if (cachedLocal?.requestKey === requestKey) {
+        setResult(cachedLocal.result);
+        setRecords((current) =>
+          cachedLocal.result.record ? [cachedLocal.result.record, ...current.filter((item) => item.id !== cachedLocal.result.record.id)].slice(0, 12) : current
+        );
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const cachedResponse = await api.get<{ found: boolean; cached: boolean; result: AnalyzeResponse | null }>("/api/analysis", {
+          params: {
+            input: currentPrimary,
+            type: payload.contentType
+          },
+          cache: "no-store"
+        });
+
+        if (cachedResponse?.found && cachedResponse.result) {
+          setResult(cachedResponse.result);
+          setRecords((current) =>
+            cachedResponse.result?.record
+              ? [cachedResponse.result.record, ...current.filter((item) => item.id !== cachedResponse.result!.record.id)].slice(0, 12)
+              : current
+          );
+          persistLastAnalysis(requestKey, cachedResponse.result);
+          setLoading(false);
+          return;
+        }
+      } catch {
+        // continue to live analysis when no cached response exists
+      }
+
       const requestPayload = {
         ...payload,
         input: payload.content
@@ -326,13 +410,24 @@ export function DashboardStateProvider({
 
       setResult(data);
       setRecords((current) => [data.record, ...current.filter((item) => item.id !== data.record.id)].slice(0, 12));
+      persistLastAnalysis(requestKey, data);
       await refreshSnapshot(data.record.hash);
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Live analysis failed.");
     } finally {
       setLoading(false);
     }
-  }, [refreshSnapshot]);
+  }, [buildRequestKey, persistLastAnalysis, readLastAnalysis, refreshSnapshot]);
+
+  useEffect(() => {
+    if (result || initialSnapshot?.result) return;
+    const cached = readLastAnalysis();
+    if (!cached?.result) return;
+    setResult(cached.result);
+    if (cached.result.record) {
+      setRecords((current) => [cached.result.record, ...current.filter((item) => item.id !== cached.result.record.id)].slice(0, 12));
+    }
+  }, [initialSnapshot?.result, readLastAnalysis, result]);
 
   useEffect(() => {
     if (!result) return;

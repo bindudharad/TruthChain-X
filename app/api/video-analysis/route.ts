@@ -1,4 +1,4 @@
-import { analyzeVideoContent } from "@/lib/universal-analysis";
+import { analyzeInput } from "@/server/services/trust-analysis/engine";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,7 +11,15 @@ export async function POST(request: Request) {
       return Response.json({ error: "Video URL is required." }, { status: 400 });
     }
 
-    const result = await analyzeVideoContent(url);
+    const result = await analyzeInput({
+      type: "video",
+      content: url,
+      videoUrl: url,
+      url,
+      fileName: "video-analysis.txt",
+      creatorId: "video-analysis",
+      creatorName: "TruthChain-X Video Analysis"
+    });
     return Response.json(result);
   } catch (error) {
     return Response.json(

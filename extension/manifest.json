@@ -3,7 +3,7 @@
   "name": "TruthChain-X",
   "version": "0.1.0",
   "description": "Real-time phishing detection and protection.",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": ["activeTab", "contextMenus", "scripting", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"

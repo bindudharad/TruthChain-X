@@ -1,0 +1,160 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AnalysisType {
+  url
+  text
+  image
+  video
+  qr
+}
+
+enum Verdict {
+  SAFE
+  SUSPICIOUS
+  HIGH_RISK
+}
+
+enum SignalType {
+  safe
+  risk
+}
+
+enum SourcePlatform {
+  web
+  youtube
+  social
+  image
+  search
+}
+
+model User {
+  id         String            @id @default(cuid())
+  externalId String            @unique
+  email      String            @unique
+  name       String?
+  password   String?
+  createdAt  DateTime          @default(now())
+  analyses   Analysis[]
+  history    AnalysisHistory[]
+  insights   UserInsight[]
+}
+
+model Analysis {
+  id           String            @id @default(cuid())
+  input        String
+  inputHash    String            @unique
+  inputType    AnalysisType
+  recordHash   String?
+  trustScore   Int
+  safe         Int
+  risk         Int
+  verdict      Verdict
+  explanation  String
+  reasons      String[]
+  confidence   Int
+  limitedData  Boolean           @default(false)
+  cached       Boolean           @default(false)
+  isBookmarked Boolean           @default(false)
+  responseJson Json?
+  userId       String?
+  user         User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  details      AnalysisDetails?
+  history      AnalysisHistory[]
+  signals      Signal[]
+  reports      Report[]
+  similarities Similarity[]
+
+  @@index([userId, createdAt])
+  @@index([inputType, createdAt])
+}
+
+model AnalysisDetails {
+  id          String   @id @default(cuid())
+  analysisId  String   @unique
+  analysis    Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  safeSignals Json
+  riskSignals Json
+  explanation Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AnalysisHistory {
+  id         String       @id @default(cuid())
+  userId     String
+  analysisId String
+  inputValue String
+  inputType  AnalysisType
+  score      Int
+  verdict    Verdict
+  isBookmarked Boolean    @default(false)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis   Analysis     @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, inputValue])
+  @@index([userId, updatedAt])
+  @@index([analysisId])
+}
+
+model UserInsight {
+  id         String   @id @default(cuid())
+  userId     String
+  inputValue String
+  count      Int      @default(1)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, inputValue])
+  @@index([userId, count])
+}
+
+model Signal {
+  id          String     @id @default(cuid())
+  analysisId  String
+  analysis    Analysis   @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  type        SignalType
+  title       String
+  description String
+  impactScore Int
+
+  @@index([analysisId])
+}
+
+model Report {
+  id          String         @id @default(cuid())
+  analysisId  String
+  analysis    Analysis       @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  sourceUrl   String
+  title       String
+  image       String?
+  description String?
+  source      String?
+  author      String?
+  platform    SourcePlatform @default(web)
+
+  @@index([analysisId])
+}
+
+model Similarity {
+  id              String    @id @default(cuid())
+  analysisId      String
+  analysis        Analysis  @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  matchPercentage Int
+  title           String
+  url             String?
+  image           String?
+  source          String?
+
+  @@index([analysisId])
+}

@@ -1,5 +1,33 @@
 [
   {
+    "userId": "analyst",
+    "email": "analyst@truthchain.ai",
+    "displayName": "Trust Analyst",
+    "role": "user",
+    "plan": "free",
+    "trustScore": 62,
+    "riskLevel": "medium",
+    "reportsCount": 0,
+    "contentHistory": [],
+    "verificationStatus": "pending",
+    "badges": [],
+    "reportsAccuracy": 50,
+    "permissions": [
+      "view:dashboard",
+      "view:passport",
+      "create:report",
+      "create:upload",
+      "create:similarity-search"
+    ],
+    "uploadRestricted": false,
+    "blockchainIdentityHash": "1616a857f66fbd79e1c22773ab144c09f2251c1ccc1b77949e7cadcc359d1553",
+    "createdAt": "2026-04-26T14:07:01.379Z",
+    "lastLoginAt": "2026-04-28T07:23:05.397Z",
+    "behaviorFlags": [],
+    "passwordHash": "$2b$10$2xGYf3GKw4.X0RcsASMIc.XADEdjOpAzFYnj6gYFasj0hqLuZUwuK",
+    "passwordSalt": "58dc0eb69728f8fd8f1ff9a9834e3a9c"
+  },
+  {
     "userId": "qa_user",
     "email": "qa-user@example.com",
     "displayName": "QA User",

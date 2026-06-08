@@ -13,6 +13,8 @@
     "chain:deploy": "hardhat run scripts/deploy.ts --network polygonAmoy"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
     "ethers": "^6.13.4",
@@ -22,7 +24,10 @@
     "lucide-react": "^0.469.0",
     "mongoose": "^8.23.1",
     "next": "^15.1.4",
+    "pdf-lib": "^1.17.1",
+    "pg": "^8.20.0",
     "pngjs": "^7.0.0",
+    "prisma": "^7.8.0",
     "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

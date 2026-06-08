@@ -5,20 +5,20 @@
     "credibilityScore": 98,
     "riskLevel": "low",
     "verifiedBadge": false,
-    "totalUploads": 123,
-    "verifiedCount": 112,
+    "totalUploads": 124,
+    "verifiedCount": 113,
     "flaggedCount": 4,
     "contentHistory": [
+      "39b8c7836b3c884645ffc801959c7c472caae2f2b6567699cd356a61f08cb710",
       "b37a514990cffd2031b35b832ccaba21e9aa36ba138f0fa8b100dde06741333f",
       "60169688e6310a30960f71665419f2c083b7a14216d02c9dc0a3ed34641e287d",
       "78fd077bbca21a4b6961facd8d8dc61c9b4313b3d8acb7f725b422b92d67e135",
       "958843a8d59ddb19f227dac50f3bca8d82a78866411b27be8e3f1f123b5ed12d",
       "cf37e61482196f3b9f808ceb3a9a86961411088981c34f97a0e5abf91a92a260",
       "f2f48e40c226520e1af9140d03e3357e2a00d7c991463974b19a33d28fb77324",
-      "7a8db0fb1358cc45f330484eab31f3f542a67377759422450d8de70fd61649c9",
-      "de2b2edf64426fa8cf9a38ba1e427a554538d22c1ee70ec0137b5038303c1df9"
+      "7a8db0fb1358cc45f330484eab31f3f542a67377759422450d8de70fd61649c9"
     ],
-    "historySummary": "Demo Creator has 112 trusted items and 4 flagged items on record.",
+    "historySummary": "Demo Creator has 113 trusted items and 4 flagged items on record.",
     "blockchainIdentityId": "C1C5F66245D9846F",
     "identityStatus": "queued"
   },

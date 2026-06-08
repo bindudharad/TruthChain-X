@@ -1,4 +1,4 @@
-export type ContentType = "text" | "image" | "video";
+export type ContentType = "text" | "image" | "video" | "url" | "qr";
 export type ModelVerdict = "real" | "uncertain" | "fake";
 export type BlockchainStatus = "confirmed" | "queued";
 export type RiskLevel = "low" | "moderate" | "high" | "critical";
@@ -93,6 +93,8 @@ export type VerificationSourceHit = {
   snippet?: string;
   publishedAt?: string;
   sourceType: "news" | "search" | "fact-check" | "knowledge";
+  thumbnail?: string;
+  author?: string;
 };
 
 export type FactCheckArticle = {
@@ -129,6 +131,31 @@ export type ReverseImageSearchResponse = {
   results: ReverseImageMatch[];
   searchedAt: string;
   searchedWith: "serpapi";
+  note?: string;
+};
+
+export type VisualSearchResult = {
+  id: string;
+  image: string;
+  thumbnail: string;
+  title: string;
+  source: string;
+  platform: string;
+  link: string;
+  description?: string;
+  width?: number;
+  height?: number;
+};
+
+export type VisualSearchResponse = {
+  query: string;
+  mode: "text" | "image";
+  results: VisualSearchResult[];
+  page: number;
+  pageSize: number;
+  hasMore: boolean;
+  provider: "serpapi" | "bing" | "mixed" | "unavailable";
+  searchedAt: string;
   note?: string;
 };
 
@@ -818,4 +845,48 @@ export type DashboardSnapshot = {
   community: CommunityValidation;
   copilot: CopilotSnapshot;
   intelligence: GlobalIntelligenceSnapshot;
+};
+
+export type TrustSource = {
+  image?: string;
+  source: string;
+  title: string;
+  author?: string;
+  link: string;
+  description?: string;
+  platform?: string;
+};
+
+export type TrustSimilarity = {
+  title: string;
+  url?: string;
+  image?: string;
+  matchPercentage: number;
+  source?: string;
+  description?: string;
+};
+
+export type TrustSignal = {
+  type: "safe" | "risk";
+  title: string;
+  description: string;
+  impactScore: number;
+};
+
+export type UnifiedTrustAnalysis = {
+  analysisId?: string;
+  input: string;
+  type: ContentType;
+  score: number;
+  safe: number;
+  risk: number;
+  verdict: "SAFE" | "SUSPICIOUS" | "HIGH RISK";
+  reasons: string[];
+  sources: TrustSource[];
+  confidence: number;
+  signals: TrustSignal[];
+  similarities: TrustSimilarity[];
+  limitedData: boolean;
+  cached: boolean;
+  createdAt?: string;
 };

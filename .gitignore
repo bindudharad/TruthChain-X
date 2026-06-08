@@ -1,9 +1,8 @@
-.next
-node_modules
+﻿node_modules/
+.next/
+.env
 .env.local
-dist
-artifacts
-cache
-typechain-types
-uploads
-data/generated
+artifacts/
+cache/
+*.log
+*.err

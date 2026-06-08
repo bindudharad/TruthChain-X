@@ -1,4 +1,4 @@
-import { analyzeUrlContent } from "@/lib/universal-analysis";
+import { analyzeInput } from "@/server/services/trust-analysis/engine";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,7 +11,20 @@ export async function POST(request: Request) {
       return Response.json({ error: "URL is required." }, { status: 400 });
     }
 
-    const result = await analyzeUrlContent(url);
+    try {
+      new URL(url);
+    } catch {
+      return Response.json({ error: "Invalid URL." }, { status: 400 });
+    }
+
+    const result = await analyzeInput({
+      type: "url",
+      content: url,
+      url,
+      fileName: "url-analysis.txt",
+      creatorId: "url-analysis",
+      creatorName: "TruthChain-X URL Analysis"
+    });
     return Response.json(result);
   } catch (error) {
     return Response.json(

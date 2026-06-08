@@ -1,7 +1,7 @@
 import { AnalysisInput } from "@/lib/types";
 
 export function validateAnalysisInput(input: Partial<AnalysisInput>) {
-  if (!input.type || !["text", "image", "video"].includes(input.type)) {
+  if (!input.type || !["text", "image", "video", "url", "qr"].includes(input.type)) {
     return "Invalid or missing content type.";
   }
 
